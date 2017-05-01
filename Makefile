@@ -6,13 +6,17 @@
 #    By: ybarbier <ybarbier@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/01 14:16:31 by ybarbier          #+#    #+#              #
-#    Updated: 2017/05/01 14:35:10 by ybarbier         ###   ########.fr        #
+#    Updated: 2017/05/01 16:43:52 by ybarbier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #_____________CONFIG____________#
 
-NAME = malloc
+ifeq ($(HOSTTYPE),)
+	HOSTTYPE := $(shell uname -m)_$(shell uname -s)
+endif
+
+NAME = libft_malloc_$(HOSTTYPE).so
 
 PATH_SRC = ./src/
 
