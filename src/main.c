@@ -46,7 +46,23 @@ int main(int argc, char **argv) {
 }
 */
 
-void ft_get_page(size_t size) {	
+size_t	get_number_allocation(size_t page_size, size_t block_size) {
+	size_t	nb_allocation;
+	size_t	total_blocks;
+
+	nb_allocation = 1;
+	total_blocks = 0;
+
+	if (block_size != 0){
+		while (total_blocks < 100){
+			total_blocks = nb_allocation * page_size / block_size;
+			nb_allocation++;
+		}
+	}
+	return nb_allocation;
+}
+
+void ft_get_page(size_t size) {
 	void *first_addr;
 	int page_numbers;
 	int page_size;
@@ -54,16 +70,16 @@ void ft_get_page(size_t size) {
 	page_size = getpagesize();
 
 	if (page_size > 0)
-	{	
+	{
 
 	page_number = size / getpagesize();
 
 	if (size > LIMIT_TINY)
 	{
-		
+
 	}
-	
-	first_addr = mmap(0, , 
+
+	first_addr = mmap(0, ,
 
 	}
 }
