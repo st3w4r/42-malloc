@@ -46,20 +46,20 @@ int main(int argc, char **argv) {
 }
 */
 
-size_t	get_number_allocation(size_t page_size, size_t block_size) {
+size_t	get_number_of_pages(size_t page_size, size_t block_size) {
+	size_t	nb_page;
 	size_t	nb_allocation;
-	size_t	total_blocks;
 
-	nb_allocation = 1;
-	total_blocks = 0;
+	nb_page = 1;
+	nb_allocation = 0;
 
-	if (block_size != 0){
-		while (total_blocks < 100){
-			total_blocks = nb_allocation * page_size / block_size;
-			nb_allocation++;
+	if (block_size != 0 && page_size != 0){
+		while (nb_allocation < 100){
+			nb_allocation = nb_page * page_size / block_size;
+			nb_page++;
 		}
 	}
-	return nb_allocation;
+	return nb_page;
 }
 
 void ft_get_page(size_t size) {
