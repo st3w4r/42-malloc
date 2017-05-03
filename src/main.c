@@ -5,6 +5,7 @@
 #include <sys/resource.h>
 #include <stdint.h>
 
+/*
 int main(int argc, char **argv) {
 
 	int i;
@@ -43,7 +44,34 @@ int main(int argc, char **argv) {
 
 	return (0);
 }
+*/
 
+void ft_get_page(size_t size) {	
+	void *first_addr;
+	int page_numbers;
+	int page_size;
+
+	page_size = getpagesize();
+
+	if (page_size > 0)
+	{	
+
+	page_number = size / getpagesize();
+
+	if (size > LIMIT_TINY)
+	{
+		
+	}
+	
+	first_addr = mmap(0, , 
+
+	}
+}
+
+int main(int argc, char **) {
+
+	first_addr = mmap(0, LIMI
+}
 // void *malloc(size_t size) {
 //
 // }
