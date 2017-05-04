@@ -5,6 +5,7 @@
 #include <sys/resource.h>
 #include <stdint.h>
 
+#include "malloc.h"
 /*
 int main(int argc, char **argv) {
 
@@ -46,47 +47,55 @@ int main(int argc, char **argv) {
 }
 */
 
-size_t	get_number_of_pages(size_t page_size, size_t block_size) {
-	size_t	nb_page;
-	size_t	nb_allocation;
 
-	nb_page = 1;
-	nb_allocation = 0;
+// size_t	get_number_of_pages(size_t page_size, size_t block_size) {
+// 	size_t	nb_page;
+// 	size_t	nb_allocation;
+//
+// 	nb_page = 1;
+// 	nb_allocation = 0;
+//
+// 	if (block_size > 0 && page_size > 0){
+// 		while (nb_allocation < 100){
+// 			nb_allocation = nb_page * page_size / block_size;
+// 			nb_page++;
+// 		}
+// 	}
+// 	return nb_page;
+// }
 
-	if (block_size != 0 && page_size != 0){
-		while (nb_allocation < 100){
-			nb_allocation = nb_page * page_size / block_size;
-			nb_page++;
-		}
-	}
-	return nb_page;
-}
+// void ft_get_page(size_t size) {
+// 	void *first_addr;
+// 	int page_numbers;
+// 	int page_size;
+//
+// 	page_size = getpagesize();
+//
+// 	if (page_size > 0)
+// 	{
+//
+// 	page_number = size / getpagesize();
+//
+// 	if (size > LIMIT_TINY)
+// 	{
+//
+// 	}
+//
+// 	first_addr = mmap(0, ,
+//
+// 	}
+// }
 
-void ft_get_page(size_t size) {
-	void *first_addr;
-	int page_numbers;
-	int page_size;
+int main(int argc, char **argv) {
+	// first_addr = mmap(0, LIMI
+	// printf("%lu\n", sizeof(t_block));
 
-	page_size = getpagesize();
+	// void *ptr;
+	first_addr = create_empty_zone(TINY_BLOCK);
 
-	if (page_size > 0)
-	{
 
-	page_number = size / getpagesize();
+	printf("%p\n", &first_addr);
 
-	if (size > LIMIT_TINY)
-	{
-
-	}
-
-	first_addr = mmap(0, ,
-
-	}
-}
-
-int main(int argc, char **) {
-
-	first_addr = mmap(0, LIMI
 }
 // void *malloc(size_t size) {
 //
