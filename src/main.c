@@ -88,14 +88,20 @@ int main(int argc, char **argv) {
 
 void display_memory(void *first_addr) {
 	t_block *block;
+	int i;
 
 	block = (t_block*)first_addr;
-	printf("----Memory----\n");
-	printf("first_addr: %p\n", block->first_addr);
-	printf("next_addr: %p\n", block->next_addr);
-	printf("used: %d\n", block->used);
-	printf("size_data: %lu\n", block->size_data);
-	printf("ptr_data: %p\n", block->ptr_data);
+	while (block != NULL) {
+		printf("----Memory----\n");
+		printf("first_addr: %p\n", block->prev_addr);
+		printf("next_addr: %p\n", block->next_addr);
+		printf("used: %d\n", block->used);
+		printf("size_data: %lu\n", block->size_data);
+		printf("size_block: %lu\n", block->size_block);
+		printf("ptr_data: %p\n", block->ptr_data);
+		printf("Counter: %d\n", i++);
+		block = block->next_addr;
+	}
 }
 
 int main(int argc, char **argv) {

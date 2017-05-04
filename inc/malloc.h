@@ -18,19 +18,20 @@
 # define LIMIT_TINY 1000
 # define LIMIT_SMALL 10000
 
-# define TINY_BLOCK 1024
+# define TINY_BLOCK 976
 # define SMALL_BLOCK 10000
 
-# define MIN_ALLOCATION_PER_ZONE 100
+# define MIN_ALLOCATION_PER_ZONE 1
 
 void *first_addr;
 
 typedef struct s_block {
-	void					*first_addr;
+	void					*prev_addr;
 	void					*next_addr;
 	unsigned int	used;
 	// char					type;
 	size_t				size_data;
+	size_t				size_block;
 	void					*ptr_data;
 } t_block;
 
