@@ -64,7 +64,7 @@ void init_zone(void *first_zone_addr, size_t allocation_size, size_t block_size)
 
 	while (total_size + (block_size + sizeof(t_block)) <= allocation_size) {
 		block = init_one_block(first_zone_addr + total_size, block_size);
-		total_size += block_size + sizeof(t_block);
+		total_size += sizeof(t_block) + block_size;
 		block->next_addr = first_zone_addr + total_size;
 	}
 	block->next_addr = NULL;
@@ -85,24 +85,10 @@ t_block *init_one_block(void *block_ptr, size_t size_block) {
 	return block;
 }
 
-// void	init_zone(void *first_zone_addr, size_t nb_block, size_t block_size, char type) {
-// 	t_block block;
-//
-// 	block.first_addr = first_zone_addr;
-// 	block.next_addr = sizeof(t_block) + block_size;
-// 	block.used = 0;
-// 	block.type = type;
-// 	block.size_data = block_size;
-// 	block.ptr_data = first_zone_addr + sizeof(t_block);
-// }
-//
-// void	init_block(void *first_zone_addr, size_t block_size, char type) {
-// 	t_block block;
-//
-// 	block.first_addr = first_zone_addr;
-// 	block.next_addr = first_zone_addr + sizeof(t_block) + block_size;
-// 	block.used = 0;
-// 	block.type = type;
-// 	block.size_data = block_size;
-// 	block.ptr_data = first_zone_addr + sizeof(t_block);
-// }
+t_block *create_outside_zone(size_t size_block) {
+	void *ptr_zone;
+
+	ptr_zone = allocate_zone(size_block);
+	init_zone(ptr_zone, size_block, size_block);
+	return ptr_zone;
+}

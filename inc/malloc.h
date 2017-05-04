@@ -18,8 +18,8 @@
 # define LIMIT_TINY 1000
 # define LIMIT_SMALL 10000
 
-# define TINY_BLOCK 976
-# define SMALL_BLOCK 10000
+# define TINY_BLOCK 100
+# define SMALL_BLOCK 1000
 
 # define MIN_ALLOCATION_PER_ZONE 1
 
@@ -44,7 +44,8 @@ typedef struct s_block {
 /**
  * malloc.c file
  */
-void *malloc(size_t size);
+void *get_new_zone(size_t size);
+void *ft_malloc(size_t size);
 
 /**
 * zone.c file
@@ -56,5 +57,6 @@ size_t	get_number_of_pages(size_t page_size, size_t block_size);
 void		*allocate_zone(size_t allocation_size);
 void		init_zone(void *first_zone_addr, size_t allocation_size, size_t block_size);
 t_block	*init_one_block(void *block_ptr, size_t size_data);
+t_block	*create_outside_zone(size_t size_block);
 
 #endif
