@@ -3,11 +3,11 @@
 
 void	*create_empty_zone(size_t block_size) {
 	size_t allocation_size;
-	void *ptr;
+	void *ptr_zone;
 
 	allocation_size = get_allocation_size(block_size);
-	ptr = allocation_zone(allocation_size);
-	init_zone(ptr, allocation_size, block_size);
+	ptr_zone = allocate_zone(allocation_size);
+	init_zone(ptr_zone, allocation_size, block_size);
 
 	return ptr_zone;
 }
@@ -56,22 +56,26 @@ void *allocate_zone(size_t allocation_size) {
 }
 
 void init_zone(void *first_zone_addr, size_t allocation_size, size_t block_size) {
-	// t_block *block;
-	// size_t total_size;
-	//
-	// block = (t_block)ptr;
-	// block->first_addr = ptr;
-	// block->next_addr =
-}
-
-void *init_one_block(void *block_ptr, char type) {
+	size_t total_size;
 	t_block *block;
 
-	block = (t_block)block_ptr;
+	total_size = 0;
+
+	while (total_size + (block_size + sizeof(t_block)) <= allocation_size) {
+		block = init_one_block(first_zone_addr + total_size, block_size);
+		total_size += block_size + sizeof(t_block);
+	}
+
+}
+
+t_block *init_one_block(void *block_ptr, size_t size_data) {
+	t_block *block;
+
+	block = (t_block*)block_ptr;
 	block->first_addr = block_ptr;
 	block->next_addr = NULL;
-	block->used = 0;
-	block->type = type;
+	block->used = FALSE;
+	block->size_data = size_data;
 	block->ptr_data = block_ptr + sizeof(t_block);
 
 	return block;

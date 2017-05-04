@@ -86,6 +86,18 @@ int main(int argc, char **argv) {
 // 	}
 // }
 
+void display_memory(void *first_addr) {
+	t_block *block;
+
+	block = (t_block*)first_addr;
+	printf("----Memory----\n");
+	printf("first_addr: %p\n", block->first_addr);
+	printf("next_addr: %p\n", block->next_addr);
+	printf("used: %d\n", block->used);
+	printf("size_data: %lu\n", block->size_data);
+	printf("ptr_data: %p\n", block->ptr_data);
+}
+
 int main(int argc, char **argv) {
 	// first_addr = mmap(0, LIMI
 	// printf("%lu\n", sizeof(t_block));
@@ -93,8 +105,9 @@ int main(int argc, char **argv) {
 	// void *ptr;
 	first_addr = create_empty_zone(TINY_BLOCK);
 
-
 	printf("%p\n", &first_addr);
+
+	display_memory(first_addr);
 
 }
 // void *malloc(size_t size) {
