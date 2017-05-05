@@ -17,3 +17,47 @@ void set_block_to_used(t_block *block, size_t size_data) {
   block->size_data = size_data;
   block->is_free = FALSE;
 }
+
+// void add_block_to_zone(t_zone *zone, t_block *block) {
+//   zone->first_block = block;
+// }
+
+/*
+** Calcul the available space
+** If the space is unsufisant return false if the block is added return true
+*/
+
+// t_bool check_available_space(t_zone *zone, size_t block_size) {
+//
+// }
+
+/*
+** Add new block to the end of the zone
+*/
+t_block *add_new_block(t_zone *zone, t_block *block) {
+  t_block *current_block;
+
+  current_block = zone->first_block;
+  while (current_block != NULL) {
+    current_block = current_block->next_addr;
+  }
+  current_block = block;
+  return current_block
+}
+
+/*
+** Get a unsed block, return NULL if no block is available
+*/
+t_block *get_block_unused(t_block *block) {
+  t_block *current_block;
+
+  current_block = block;
+  while (current_block != NULL && current_block->is_free == FALSE) {
+    current_block = current_block->next_addr;
+  }
+  return current_block;
+}
+//
+// t_block *get_block(t_zone *zone, t_block *block) {
+//
+// }

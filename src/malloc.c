@@ -29,15 +29,27 @@
 //   return current_block;
 // }
 
-void *ft_malloc(size_t size) {
-  t_block *first_block;
-  t_block *block;
 
-  if (first_addr == NULL) {
-    first_addr = get_new_zone(size);
+void *ft_malloc(size_t) {
+  t_zone *first_zone;
+
+  first_zone = (t_zone*)first_addr;
+  if (first_zone == NULL) {
+    first_zone = get_new_zone(size);
   }
-  first_block = (t_block*)first_addr;
-  block = get_block_unused(first_block);
-  set_block_to_used(block, size);
-  return block;
+  first_zone = (t_block*)
+
 }
+
+// void *ft_malloc(size_t size) {
+//   t_block *first_block;
+//   t_block *block;
+//
+//   if (first_addr == NULL) {
+//     first_addr = get_new_zone(size);
+//   }
+//   first_block = (t_block*)first_addr;
+//   block = get_block_unused(first_block);
+//   set_block_to_used(block, size);
+//   return block;
+// }

@@ -44,6 +44,8 @@ typedef struct s_zone {
 	char		type;
 } t_zone;
 
+typedef unsigned int boolean t_bool;
+
 // typedef struct s_zone_table {
 //   t_zone *tiny_zone;
 //   t_zone *small_zone;
@@ -65,7 +67,7 @@ void *ft_malloc(size_t size);
 /**
 * File: zone.c
 */
-void *get_new_zone(size_t size);
+void		*get_new_zone(size_t size);
 void		*create_empty_zone(size_t block_size);
 size_t	get_allocation_size(size_t block_size);
 size_t	get_number_of_pages(size_t page_size, size_t block_size);
@@ -78,5 +80,8 @@ void		init_zone(void *first_zone_addr, size_t allocation_size, size_t block_size
 */
 
 t_block	*init_one_block(void *block_ptr);
+void		set_block_to_used(t_block *block, size_t size_data);
+t_block	*add_new_block(t_zone *zone, t_block *block);
+t_block	*get_block_unused(t_block *block);
 
 #endif

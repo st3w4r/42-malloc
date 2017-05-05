@@ -99,6 +99,10 @@ void init_zone(void *first_zone_addr,
 	zone->type = type;
 }
 
+// void add_zone_to_tail(t_zone current_zone, t_zone new_zone) {
+// 	current_zone->next_zone = new_zone;
+// }
+
 // void init_zone(void *first_zone_addr, size_t allocation_size, size_t block_size) {
 // 	size_t total_size;
 // 	t_block *block;
