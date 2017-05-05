@@ -1,6 +1,6 @@
 #include "malloc.h"
 
-t_block *init_one_block(void *block_ptr) {
+t_block *init_one_block(t_block *block_ptr) {
 	t_block *block;
 
 	block = (t_block*)block_ptr;
@@ -31,6 +31,17 @@ void set_block_to_used(t_block *block, size_t size_data) {
 //
 // }
 
+
+t_block *get_last_block(t_zone *zone) {
+  t_block *current_block;
+
+  current_block = zone->first_block;
+  while (current_block->next_addr != NULL) {
+    current_block = current_block->next_addr;
+  }
+  return current_block;
+}
+
 /*
 ** Add new block to the end of the zone
 */
@@ -42,7 +53,7 @@ t_block *add_new_block(t_zone *zone, t_block *block) {
     current_block = current_block->next_addr;
   }
   current_block = block;
-  return current_block
+  return current_block;
 }
 
 /*
@@ -52,9 +63,13 @@ t_block *get_block_unused(t_block *block) {
   t_block *current_block;
 
   current_block = block;
-  while (current_block != NULL && current_block->is_free == FALSE) {
+  // printf("current_block: %p\n", current_block);
+  // printf("next_block: %p\n", current_block->next_addr);
+  while (current_block != NULL) {
+  // // while (current_block != NULL && current_block->is_free == FALSE) {
     current_block = current_block->next_addr;
   }
+  printf("current_block: %p\n", current_block);
   return current_block;
 }
 //

@@ -26,7 +26,7 @@ t_zone	*create_empty_zone(size_t block_size, char type) {
 	void *ptr_zone;
 
 	if (type == LARGE) {
-		allocation_size = block_sizes;
+		allocation_size = block_size;
 	} else {
 		allocation_size = get_allocation_size(block_size);
 	}

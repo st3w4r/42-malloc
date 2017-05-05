@@ -11,9 +11,9 @@
 # define FALSE 0
 # define TRUE 1
 
-# define TINY "T"
-# define SMALL "S"
-# define LARGE "L"
+# define TINY 'T'
+# define SMALL 'S'
+# define LARGE 'L'
 
 # define LIMIT_TINY 1000
 # define LIMIT_SMALL 10000
@@ -37,14 +37,14 @@ typedef struct s_block {
 } t_block;
 
 typedef struct s_zone {
-	void		*first_block;
+	t_block		*first_block;
   void		*current_zone;
   void		*next_zone;
 	size_t	size;
 	char		type;
 } t_zone;
 
-typedef unsigned int boolean t_bool;
+typedef unsigned int t_bool;
 
 // typedef struct s_zone_table {
 //   t_zone *tiny_zone;
@@ -61,14 +61,13 @@ typedef unsigned int boolean t_bool;
 /**
  * File: malloc.c
  */
-void *get_new_zone(size_t size);
 void *ft_malloc(size_t size);
 
 /**
 * File: zone.c
 */
-void		*get_new_zone(size_t size);
-void		*create_empty_zone(size_t block_size);
+t_zone	*get_new_zone(size_t size);
+t_zone	*create_empty_zone(size_t block_size, char type);
 size_t	get_allocation_size(size_t block_size);
 size_t	get_number_of_pages(size_t page_size, size_t block_size);
 void		*allocate_zone(size_t allocation_size);
@@ -79,8 +78,9 @@ void		init_zone(void *first_zone_addr, size_t allocation_size, size_t block_size
 * File: block.c.
 */
 
-t_block	*init_one_block(void *block_ptr);
+t_block *init_one_block(t_block *block_ptr);
 void		set_block_to_used(t_block *block, size_t size_data);
+t_block *get_last_block(t_zone *zone);
 t_block	*add_new_block(t_zone *zone, t_block *block);
 t_block	*get_block_unused(t_block *block);
 

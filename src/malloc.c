@@ -30,15 +30,33 @@
 // }
 
 
-void *ft_malloc(size_t) {
+void *ft_malloc(size_t size) {
   t_zone *first_zone;
+  t_block *block;
 
   first_zone = (t_zone*)first_addr;
   if (first_zone == NULL) {
     first_zone = get_new_zone(size);
+    init_one_block(first_zone->first_block);
   }
-  first_zone = (t_block*)
 
+  // printf("size: %lu\n", first_zone->size);
+  // printf("space available: %lu\n", first_zone->size - sizeof(t_zone));
+  // printf("size zone header: %lu\n", sizeof(t_zone));
+  // printf("addr: %p\n", first_zone);
+  // printf("current_block: %p\n", first_zone->current_zone);
+  // printf("first_block: %p\n", first_zone->first_block);
+
+  block = get_block_unused(first_zone->first_block);
+  if (block == NULL) {
+    block = get_last_block(first_zone);
+    block = init_one_block(block + block->size_data);
+  }
+  // printf("block: %p\n", block);
+  set_block_to_used(block, size);
+  // init_one_block(block);
+  // set_block_to_used(block, size);
+  return block;
 }
 
 // void *ft_malloc(size_t size) {
