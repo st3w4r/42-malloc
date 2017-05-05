@@ -123,9 +123,9 @@ int main(int argc, char **argv) {
 	printf("%p\n", &ptr);
 	display_memory(first_addr);
 	printf("__________________\n" );
-	ptr2 = ft_malloc(nb);
-	printf("%p\n", &ptr2);
-	display_memory(first_addr);
+	// ptr2 = ft_malloc(nb);
+	// printf("%p\n", &ptr2);
+	// display_memory(first_addr);
 	// printf("__________________\n" );
 	// ptr3 = ft_malloc(nb);
 	// printf("%p\n", &ptr3);
@@ -134,6 +134,7 @@ int main(int argc, char **argv) {
 	// ptr4 = ft_malloc(nb);
 	// printf("%p\n", &ptr4);
 	// display_memory(first_addr);
+	// while(42);
 
 }
 // void *malloc(size_t size) {
