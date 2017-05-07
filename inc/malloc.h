@@ -18,8 +18,8 @@
 # define LIMIT_TINY 1000
 # define LIMIT_SMALL 10000
 
-# define TINY_BLOCK 100
-# define SMALL_BLOCK 1000
+# define TINY_BLOCK 1000
+# define SMALL_BLOCK 10000
 
 # define MIN_ALLOCATION_PER_ZONE 1
 
@@ -79,6 +79,7 @@ size_t	get_allocation_size(size_t block_size);
 size_t	get_number_of_pages(size_t page_size, size_t block_size);
 void		*allocate_zone(size_t allocation_size);
 void		init_zone(void *first_zone_addr, size_t allocation_size, size_t block_size, char type);
+t_bool	is_space_available(t_zone *zone, size_t size_data_block);
 // t_block	*create_self_zone(size_t size_block);
 
 /**

@@ -99,6 +99,31 @@ void init_zone(void *first_zone_addr,
 	zone->type = type;
 }
 
+t_bool	is_space_available(t_zone *zone, size_t size_data_block) {
+	t_block	*last_block;
+	void		*max_addr;
+	void		*next_addr;
+
+
+	last_block = get_last_block(zone);
+
+	printf("current_zone: %p\n", zone->current_zone);
+	printf("last_block: %p\n", last_block->current_addr);
+
+	max_addr = zone->current_zone + zone->size;
+
+	printf("max_addr: %p\n", max_addr);
+
+	next_addr = last_block->current_addr + sizeof(t_block) + size_data_block;
+
+	printf("next_addr: %p\n", next_addr);
+
+	if (next_addr > max_addr) {
+		return FALSE;
+	}
+	return TRUE;
+}
+
 // void add_zone_to_tail(t_zone current_zone, t_zone new_zone) {
 // 	current_zone->next_zone = new_zone;
 // }

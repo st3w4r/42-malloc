@@ -45,13 +45,18 @@ void *ft_malloc(size_t size) {
     set_block_to_used(block, size);
   } else {
     block = get_block_unused(first_zone->first_block);
-    if (block == NULL) {
-      last_block = get_last_block(first_zone);
-      block = last_block->current_addr + sizeof(t_block) + last_block->size_data;
-      block = init_one_block(block);
-      last_block->next_addr = block;
+    if (is_space_available(first_zone, size) == TRUE) {
+      if (block == NULL) {
+        last_block = get_last_block(first_zone);
+        block = last_block->current_addr + sizeof(t_block) + last_block->size_data;
+          block = init_one_block(block);
+          last_block->next_addr = block;
+          printf("Space available\n");
+      }
+      set_block_to_used(block, size);
+    } else {
+      printf("No available space\n");
     }
-    set_block_to_used(block, size);
   }
 
   // printf("size: %lu\n", first_zone->size);

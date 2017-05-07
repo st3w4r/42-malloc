@@ -127,6 +127,9 @@ int main(int argc, char **argv) {
 	void *ptr;
 	void *ptr2;
 	void *ptr3;
+	void *ptr4;
+	void *ptr5;
+	void *ptr6;
 	// void *ptr4;
 
 	nb = atoi(argv[1]);
@@ -143,10 +146,34 @@ int main(int argc, char **argv) {
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
 
-	// ptr2 = ft_malloc(nb);
-	// printf("%p\n", ptr2);
+	ptr2 = ft_malloc(nb);
+	printf("%p\n", ptr2);
 	// display_memory_block(ptr);
-	// printf("__________________\n" );
+	display_memory_zone((t_zone*)first_addr);
+	printf("__________________\n" );
+
+
+
+	ptr3 = ft_malloc(nb);
+	printf("%p\n", ptr3);
+	display_memory_zone((t_zone*)first_addr);
+	printf("__________________\n" );
+
+	ptr4 = ft_malloc(nb);
+	printf("%p\n", ptr4);
+	display_memory_zone((t_zone*)first_addr);
+	printf("__________________\n" );
+
+	ptr5 = ft_malloc(nb);
+	printf("%p\n", ptr5);
+	display_memory_zone((t_zone*)first_addr);
+	printf("__________________\n" );
+	
+	ptr6 = ft_malloc(nb);
+	printf("%p\n", ptr6);
+	display_memory_zone((t_zone*)first_addr);
+	printf("__________________\n" );
+
 	//
 	// ft_free(ptr2);
 	// ptr3 = ft_malloc(nb);
