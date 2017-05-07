@@ -93,7 +93,7 @@ void display_memory_block(void *addr) {
 	block = (t_block*)addr;
 	while (block != NULL) {
 		printf("----Memory----\n");
-		printf("prev_addr: %p\n", block->prev_addr);
+		printf("current_addr: %p\n", block->current_addr);
 		printf("next_addr: %p\n", block->next_addr);
 		printf("is_free: %d\n", block->is_free);
 		printf("size_data: %lu\n", block->size_data);
@@ -108,7 +108,7 @@ int main(int argc, char **argv) {
 	int nb;
 	void *ptr;
 	void *ptr2;
-	// void *ptr3;
+	void *ptr3;
 	// void *ptr4;
 
 	nb = atoi(argv[1]);
@@ -123,14 +123,18 @@ int main(int argc, char **argv) {
 	printf("%p\n", ptr);
 	display_memory_block(ptr);
 	// display_memory(first_addr);
-	// printf("__________________\n" );
+	printf("__________________\n" );
 
-	// ptr2 = ft_malloc(nb);
-	// printf("%p\n", ptr2);
-	// display_memory_block(ptr);
-	// printf("__________________\n" );
-	// ptr3 = ft_malloc(nb);
-	// printf("%p\n", &ptr3);
+	ptr2 = ft_malloc(nb);
+	printf("%p\n", ptr2);
+	display_memory_block(ptr);
+	printf("__________________\n" );
+
+	ft_free(ptr2);
+	ptr3 = ft_malloc(nb);
+	printf("%p\n", ptr3);
+	display_memory_block(ptr);
+
 	// display_memory(first_addr);
 	// printf("__________________\n" );
 	// ptr4 = ft_malloc(nb);
