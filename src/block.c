@@ -61,7 +61,7 @@ t_block *get_block_unused(t_block *block) {
 
 void realease_block(t_block *block) {
   block->is_free = TRUE;
-}
+} 
 /*
 ** Add new block to the end of the zone
 */
