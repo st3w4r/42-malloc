@@ -124,6 +124,23 @@ t_bool	is_space_available_zone(t_zone *zone, size_t size_data_block) {
 	return TRUE;
 }
 
+
+/*
+** Add a new zone as next zone, return the new zone or NULL
+*/
+t_zone  *add_new_zone(t_zone *zone, size_t size_data) {
+  t_zone *current_zone;
+
+  if (zone == NULL) {
+    return NULL;
+  }
+  current_zone = zone;
+  while (current_zone->next_zone != NULL) {
+    current_zone = current_zone->next_zone;
+  }
+  current_zone->next_zone = get_new_zone(size_data);
+  return current_zone->next_zone;
+}
 // void add_zone_to_tail(t_zone current_zone, t_zone new_zone) {
 // 	current_zone->next_zone = new_zone;
 // }

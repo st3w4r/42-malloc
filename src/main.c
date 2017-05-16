@@ -122,6 +122,19 @@ void display_memory_zone(t_zone *zone) {
 	}
 }
 
+void display_zone_list(t_zone *zone) {
+	t_zone *current_zone;
+	int i;
+
+	i = 0;
+	current_zone = zone;
+	while (current_zone != NULL) {
+		printf("Zone: %i Type: %c Size: %zu\n", i, current_zone->type, current_zone->size);
+		i++;
+		current_zone = current_zone->next_zone;
+	}
+}
+
 int main(int argc, char **argv) {
 	int nb;
 	void *ptr;
@@ -168,8 +181,6 @@ int main(int argc, char **argv) {
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
 
-	// ft_free(NULL);
-
 	ptr5 = ft_malloc(nb);
 	printf("%p\n", ptr5);
 	display_memory_zone((t_zone*)first_addr);
@@ -180,6 +191,12 @@ int main(int argc, char **argv) {
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
 
+
+	// Test NULL
+	ft_free(NULL);
+
+	printf("__________________\n" );
+	display_zone_list((t_zone*)first_addr);
 
 	// ft_free(ptr2);
 	// ptr3 = ft_malloc(nb);

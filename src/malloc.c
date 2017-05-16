@@ -58,6 +58,7 @@ void *ft_malloc(size_t size) {
 				printf("Space available\n");
 			} else {
 				printf("No available space\n");
+				add_new_zone(first_zone, size);
 			}
 		}
 		// printf("Get block unused: %p\n", block);
