@@ -168,6 +168,7 @@ int main(int argc, char **argv) {
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
 
+	// ft_free(NULL);
 
 	ptr5 = ft_malloc(nb);
 	printf("%p\n", ptr5);

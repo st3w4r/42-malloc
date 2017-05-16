@@ -1,5 +1,7 @@
 #include "malloc.h"
 
 void ft_free(void *ptr) {
-  realease_block(ptr);
+  if (ptr != NULL) {
+    realease_block(ptr);
+  }
 }
