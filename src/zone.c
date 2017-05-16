@@ -99,7 +99,7 @@ void init_zone(void *first_zone_addr,
 	zone->type = type;
 }
 
-t_bool	is_space_available(t_zone *zone, size_t size_data_block) {
+t_bool	is_space_available_zone(t_zone *zone, size_t size_data_block) {
 	t_block	*last_block;
 	void		*max_addr;
 	void		*next_addr;

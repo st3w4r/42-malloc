@@ -164,17 +164,22 @@ int main(int argc, char **argv) {
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
 
+	ft_free(ptr4);
+	display_memory_zone((t_zone*)first_addr);
+	printf("__________________\n" );
+
+
 	ptr5 = ft_malloc(nb);
 	printf("%p\n", ptr5);
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
-	
+
 	ptr6 = ft_malloc(nb);
 	printf("%p\n", ptr6);
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
 
-	//
+
 	// ft_free(ptr2);
 	// ptr3 = ft_malloc(nb);
 	// printf("%p\n", ptr3);
