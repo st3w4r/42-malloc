@@ -73,8 +73,9 @@ t_block *get_reusable_block(t_block *block, size_t size_data) {
 	t_block *current_block;
 
 	current_block = get_block_unused(block);
-	while (current_block != NULL && is_space_available_block(current_block, size_data) == FALSE) {
-		current_block = get_block_unused(current_block);
+	while (current_block != NULL &&
+		is_space_available_block(current_block, size_data) == FALSE) {
+		current_block = get_block_unused(current_block->next_addr);
 	}
 	return current_block;
 }

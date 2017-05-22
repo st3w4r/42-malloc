@@ -103,24 +103,25 @@
 /*
 ** Retrun the right zone or return null no zone available
 */
-void get_right_zone(t_zone *first_zone, size_t size_data) {
+t_zone *get_right_zone(t_zone *first_zone, size_t size_data) {
   t_zone *current_zone;
-  t_bool found;
+  // t_bool found;
 
-  found = FALSE;
+  // found = FALSE;
   current_zone = first_zone;
-  while (found == FALSE && current_zone != NULL) {
-    if (right_type_zone(current_zone, size_data) == TRUE &&
-        is_space_available_zone(zone, size_data) == TRUE) {
-      found = TRUE;
+  while (current_zone != NULL) {
+    if (right_type_zone(current_zone, size_data) == TRUE) {
+        // is_space_available_zone(zone, size_data) == TRUE) {
+      // found = TRUE;
       // printf("Space available\n");
+      return current_zone;
     }
     current_zone = current_zone->next_zone;
   }
   return current_zone;
 }
 
-void add_block_to_zone(t_zone *zone, size_t size_data) {
+t_block *add_block_to_zone(t_zone *zone, size_t size_data) {
   t_block *block;
   t_block *last_block;
 
@@ -131,47 +132,88 @@ void add_block_to_zone(t_zone *zone, size_t size_data) {
   return block;
 }
 
-void *ft_malloc(size_t size) {
-	t_zone *first_zone;
-  t_zone *new_zone;
-  t_zone *zone;
-	t_block *block;
-	t_block *last_block;
 
-	first_zone = (t_zone*)first_addr;
-	// printf("first_zone: %p\n", first_zone);
-	if (first_zone == NULL) {
-		first_zone = get_new_zone(size);
-		first_addr = first_zone;
-		block = init_one_block(first_zone->first_block);
-	} else {
-		block = get_reusable_block(first_zone->first_block, size);
-		if (block == NULL) {
-      zone = get_right_zone(first_zone, size);
-      if (zone) {
-        add_block_to_zone(zone, size);
-        printf("Available zone\n");
+t_zone *init_first_zone(size_t size_data) {
+  t_zone *first_zone;
+
+  first_zone = (t_zone*)first_addr;
+  if (first_zone == NULL) {
+    first_zone = get_new_zone(size_data);
+    first_addr = first_zone;
+    init_one_block(first_zone->first_block);
+  }
+  return first_zone;
+}
+
+void *ft_malloc(size_t size) {
+  t_zone *first_zone;
+  t_zone *current_zone;
+  t_block *block;
+
+  first_zone = init_first_zone(size);
+  current_zone = first_zone;
+  block = NULL;
+  while (block == NULL) {
+    current_zone = get_right_zone(current_zone, size);
+    // printf("First_zone: %p Zone: %p\n", first_zone, current_zone);
+    if (current_zone == NULL) {
+      current_zone = add_new_zone(first_zone, size);
+    }
+    block = get_reusable_block(current_zone->first_block, size);
+    if (block == NULL) {
+      if (is_space_available_zone(current_zone, size) == TRUE) {
+        block = add_block_to_zone(current_zone, size);
+        // printf("Add Block: %p\n", block);
       } else {
-        new_zone = add_new_zone(first_zone, size);
-				block = init_one_block(new_zone->first_block);
-        printf("No available zone\n");
+        current_zone = current_zone->next_zone;
       }
-			// if (is_space_available_zone(first_zone, size) == TRUE) {
-			// 	last_block = get_last_block(first_zone);
-			// 	block = last_block->current_addr + sizeof(t_block) + last_block->size_data;
-			// 	block = init_one_block(block);
-			// 	last_block->next_addr = block;
-			// 	printf("Space available\n");
-			// } else {
-			// 	printf("No available space\n");
-			// 	new_zone = add_new_zone(first_zone, size);
-			// 	block = init_one_block(new_zone->first_block);
-			// }
-		}
+    }
   }
   set_block_to_used(block, size);
   return block;
 }
+
+// void *ft_malloc(size_t size) {
+// 	t_zone *first_zone;
+//   t_zone *new_zone;
+//   t_zone *zone;
+// 	t_block *block;
+// 	t_block *last_block;
+//
+// 	first_zone = (t_zone*)first_addr;
+// 	// printf("first_zone: %p\n", first_zone);
+// 	if (first_zone == NULL) {
+// 		first_zone = get_new_zone(size);
+// 		first_addr = first_zone;
+// 		block = init_one_block(first_zone->first_block);
+// 	} else {
+// 		block = get_reusable_block(first_zone->first_block, size);
+// 		if (block == NULL) {
+//       zone = get_right_zone(first_zone, size);
+//       if (zone) {
+//         add_block_to_zone(zone, size);
+//         printf("Available zone\n");
+//       } else {
+//         new_zone = add_new_zone(first_zone, size);
+// 				block = init_one_block(new_zone->first_block);
+//         printf("No available zone\n");
+//       }
+// 			// if (is_space_available_zone(first_zone, size) == TRUE) {
+// 			// 	last_block = get_last_block(first_zone);
+// 			// 	block = last_block->current_addr + sizeof(t_block) + last_block->size_data;
+// 			// 	block = init_one_block(block);
+// 			// 	last_block->next_addr = block;
+// 			// 	printf("Space available\n");
+// 			// } else {
+// 			// 	printf("No available space\n");
+// 			// 	new_zone = add_new_zone(first_zone, size);
+// 			// 	block = init_one_block(new_zone->first_block);
+// 			// }
+// 		}
+//   }
+//   set_block_to_used(block, size);
+//   return block;
+// }
 		// printf("Get block unused: %p\n", block);
 		// if (is_space_available_zone(first_zone, size) == TRUE) {
 		// 	if (block == NULL) {
