@@ -1,13 +1,13 @@
 #include "malloc.h"
 
-t_block *init_one_block(t_block *block_ptr) {
+t_block *init_one_block(t_block *block_ptr, size_t size_data) {
 	t_block *block;
 
 	block = (t_block*)block_ptr;
 	block->current_addr = block_ptr;
 	block->next_addr = NULL;
 	block->is_free = TRUE;
-	block->size_data = 0;
+	block->size_data = size_data;
 	block->ptr_data = block_ptr + sizeof(t_block);
 
 	return block;

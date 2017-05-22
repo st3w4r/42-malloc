@@ -177,7 +177,7 @@ int main(int argc, char **argv) {
 	printf("%p\n", ptr4);
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
-
+	//
 	ft_free(ptr4);
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
