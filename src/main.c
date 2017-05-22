@@ -91,6 +91,7 @@ void display_memory_block(void *addr) {
 	t_block *block;
 	int i;
 
+	i = 0;
 	block = (t_block*)addr;
 	while (block != NULL) {
 		printf("----Memory----\n");

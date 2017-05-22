@@ -4,16 +4,16 @@
 ** Get a initialized typed zone
 */
 t_zone *get_new_zone(size_t size) {
-  t_zone *zone_ptr;
+	t_zone *zone_ptr;
 
-  if (size <= TINY_BLOCK) {
-    zone_ptr = create_empty_zone(TINY_BLOCK, TINY);
-  } else if (size <= SMALL_BLOCK) {
-    zone_ptr = create_empty_zone(SMALL_BLOCK, SMALL);
-  } else {
-    zone_ptr = create_empty_zone(size, LARGE);
-  }
-  return zone_ptr;
+	if (size <= TINY_BLOCK) {
+		zone_ptr = create_empty_zone(TINY_BLOCK, TINY);
+	} else if (size <= SMALL_BLOCK) {
+		zone_ptr = create_empty_zone(SMALL_BLOCK, SMALL);
+	} else {
+		zone_ptr = create_empty_zone(size, LARGE);
+	}
+	return zone_ptr;
 }
 
 /*
@@ -26,7 +26,7 @@ t_zone	*create_empty_zone(size_t block_size, char type) {
 	void *ptr_zone;
 
 	if (type == LARGE) {
-		allocation_size = block_size;
+		allocation_size = block_size; // Add block_header_size ?
 	} else {
 		allocation_size = get_allocation_size(block_size);
 	}
@@ -129,17 +129,39 @@ t_bool	is_space_available_zone(t_zone *zone, size_t size_data_block) {
 ** Add a new zone as next zone, return the new zone or NULL
 */
 t_zone  *add_new_zone(t_zone *zone, size_t size_data) {
-  t_zone *current_zone;
+	t_zone *current_zone;
 
-  if (zone == NULL) {
-    return NULL;
-  }
-  current_zone = zone;
-  while (current_zone->next_zone != NULL) {
-    current_zone = current_zone->next_zone;
-  }
-  current_zone->next_zone = get_new_zone(size_data);
-  return current_zone->next_zone;
+	if (zone == NULL) {
+		return NULL;
+	}
+	current_zone = zone;
+	while (current_zone->next_zone != NULL) {
+		current_zone = current_zone->next_zone;
+	}
+	current_zone->next_zone = get_new_zone(size_data);
+	return current_zone->next_zone;
+}
+
+
+/*
+** Send data size and a zone, return True if the zone can get this size of data
+*/
+t_bool right_type_zone(t_zone *zone, size_t size_data) {
+	t_bool result;
+
+	result = FALSE;
+	if (zone && zone->type) {
+		if (zone->type == 'T' && size_data <= TINY_BLOCK) {
+			result = TRUE;
+		} else if (zone->type == 'S' && size_data <= SMALL_BLOCK) {
+			result = TRUE;
+		} else if (zone->type == 'L' && size_data > LIMIT_SMALL) {
+			result = TRUE;
+		} else {
+			result = FALSE;
+		}
+	}
+	return result;
 }
 // void add_zone_to_tail(t_zone current_zone, t_zone new_zone) {
 // 	current_zone->next_zone = new_zone;

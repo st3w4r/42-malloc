@@ -81,6 +81,7 @@ void		*allocate_zone(size_t allocation_size);
 void		init_zone(void *first_zone_addr, size_t allocation_size, size_t block_size, char type);
 t_bool	is_space_available_zone(t_zone *zone, size_t size_data_block);
 t_zone	*add_new_zone(t_zone *zone, size_t size_data);
+t_bool right_type_zone(t_zone *zone, size_t size_data);
 
 // t_block	*create_self_zone(size_t size_block);
 
