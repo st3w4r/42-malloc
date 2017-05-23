@@ -190,27 +190,27 @@ void release_zone(t_zone *zone) {
 }
 
 void release_empty_zone(t_zone *first_zone) {
-  t_zone *current_zone;
-  t_zone *previous_zone;
-  t_zone *next_zone;
+	t_zone *current_zone;
+	t_zone *previous_zone;
+	t_zone *next_zone;
 
-  current_zone = first_zone;
-  previous_zone = NULL;
-  next_zone = NULL;
-  while (current_zone != NULL) {
+	current_zone = first_zone;
+	previous_zone = NULL;
+	next_zone = NULL;
+	while (current_zone != NULL) {
 		next_zone = current_zone->next_zone;
-    if (zone_is_empty(current_zone) == TRUE) {
+		if (zone_is_empty(current_zone) == TRUE) {
 			release_zone(current_zone);
 			if (previous_zone == NULL) {
-				first_addr = NULL;
+				first_addr = next_zone;
 			} else {
-        previous_zone->next_zone = next_zone;
-      }
-    } else {
-      previous_zone = current_zone;
-    }
-    current_zone = next_zone;
-  }
+				previous_zone->next_zone = next_zone;
+			}
+		} else {
+			previous_zone = current_zone;
+		}
+		current_zone = next_zone;
+	}
 }
 // void add_zone_to_tail(t_zone current_zone, t_zone new_zone) {
 // 	current_zone->next_zone = new_zone;
