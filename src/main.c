@@ -111,6 +111,7 @@ void display_memory_zone(t_zone *zone) {
 	t_zone *current_zone;
 	t_block *block;
 
+	printf("ZONE: %p\n", zone);
 	current_zone = zone;
 	while (current_zone != NULL) {
 		printf("--------Zone--------\n");
@@ -130,7 +131,7 @@ void display_zone_list(t_zone *zone) {
 	i = 0;
 	current_zone = zone;
 	while (current_zone != NULL) {
-		printf("Zone: %i Type: %c Size: %zu\n", i, current_zone->type, current_zone->size);
+		printf("Zone: %i Type: %c Size: %zu Addr: %p \n", i, current_zone->type, current_zone->size, current_zone);
 		i++;
 		current_zone = current_zone->next_zone;
 	}
@@ -166,31 +167,38 @@ int main(int argc, char **argv) {
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
 
-
-
-	ptr3 = ft_malloc(nb);
-	printf("%p\n", ptr3);
+	ft_free(ptr);
+	ft_free(ptr2);
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
 
-	ptr4 = ft_malloc(nb);
-	printf("%p\n", ptr4);
-	display_memory_zone((t_zone*)first_addr);
-	printf("__________________\n" );
+
+	// ptr3 = ft_malloc(nb);
+	// printf("%p\n", ptr3);
+	// display_memory_zone((t_zone*)first_addr);
+	// printf("__________________\n" );
 	//
-	ft_free(ptr4);
-	display_memory_zone((t_zone*)first_addr);
-	printf("__________________\n" );
-
-	ptr5 = ft_malloc(nb);
-	printf("%p\n", ptr5);
-	display_memory_zone((t_zone*)first_addr);
-	printf("__________________\n" );
-
-	ptr6 = ft_malloc(nb);
-	printf("%p\n", ptr6);
-	display_memory_zone((t_zone*)first_addr);
-	printf("__________________\n" );
+	// ptr4 = ft_malloc(nb);
+	// printf("%p\n", ptr4);
+	// display_memory_zone((t_zone*)first_addr);
+	// printf("__________________\n" );
+	// //
+	// ft_free(ptr4);
+	// display_memory_zone((t_zone*)first_addr);
+	// printf("__________________\n" );
+	//
+	// ptr5 = ft_malloc(nb);
+	// printf("%p\n", ptr5);
+	// display_memory_zone((t_zone*)first_addr);
+	// printf("__________________\n" );
+	//
+	// ptr6 = ft_malloc(nb);
+	// printf("%p\n", ptr6);
+	// display_memory_zone((t_zone*)first_addr);
+	// printf("__________________\n" );
+	//
+	// ft_free(ptr6);
+	// display_memory_zone((t_zone*)first_addr);
 
 
 	// Test NULL

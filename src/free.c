@@ -2,6 +2,7 @@
 
 void ft_free(void *ptr) {
   if (ptr != NULL) {
-    realease_block(ptr);
+    release_block(ptr);
+    release_empty_zone((t_zone *)first_addr);
   }
 }

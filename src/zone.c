@@ -163,6 +163,55 @@ t_bool right_type_zone(t_zone *zone, size_t size_data) {
 	}
 	return result;
 }
+
+/*
+** Return TRUE if all block is free in the zone or false if not
+*/
+t_bool zone_is_empty(t_zone *zone) {
+	t_block *block;
+
+	// if (zone == NULL) {
+	// 	return FALSE;
+	// }
+	block = zone->first_block;
+	while (block != NULL) {
+		if (block->is_free == FALSE) {
+			return FALSE;
+		}
+		block = block->next_addr;
+	}
+	return TRUE;
+}
+
+void release_zone(t_zone *zone) {
+	int result;
+
+	result = munmap(zone->current_zone, zone->size);
+}
+
+void release_empty_zone(t_zone *first_zone) {
+  t_zone *current_zone;
+  t_zone *previous_zone;
+  t_zone *next_zone;
+
+  current_zone = first_zone;
+  previous_zone = NULL;
+  next_zone = NULL;
+  while (current_zone != NULL) {
+		next_zone = current_zone->next_zone;
+    if (zone_is_empty(current_zone) == TRUE) {
+			release_zone(current_zone);
+			if (previous_zone == NULL) {
+				first_addr = NULL;
+			} else {
+        previous_zone->next_zone = next_zone;
+      }
+    } else {
+      previous_zone = current_zone;
+    }
+    current_zone = next_zone;
+  }
+}
 // void add_zone_to_tail(t_zone current_zone, t_zone new_zone) {
 // 	current_zone->next_zone = new_zone;
 // }

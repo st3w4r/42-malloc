@@ -82,6 +82,9 @@ void		init_zone(void *first_zone_addr, size_t allocation_size, size_t block_size
 t_bool	is_space_available_zone(t_zone *zone, size_t size_data_block);
 t_zone	*add_new_zone(t_zone *zone, size_t size_data);
 t_bool right_type_zone(t_zone *zone, size_t size_data);
+t_bool zone_is_empty(t_zone *zone);
+void release_zone(t_zone *zone);
+void release_empty_zone(t_zone *first_zone);
 
 // t_block	*create_self_zone(size_t size_block);
 
@@ -97,6 +100,6 @@ t_block	*get_block_unused(t_block *block);
 t_bool	is_space_available_block(t_block *block, size_t size_data);
 // t_block *get_block_unused_size(t_block *block, size_t size_data);
 t_block *get_reusable_block(t_block *block, size_t size_data);
-void realease_block(t_block *block);
+void release_block(t_block *block);
 
 #endif

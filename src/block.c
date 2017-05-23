@@ -81,7 +81,7 @@ t_block *get_reusable_block(t_block *block, size_t size_data) {
 }
 
 
-void realease_block(t_block *block) {
+void release_block(t_block *block) {
   block->is_free = TRUE;
 }
 /*
