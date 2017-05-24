@@ -137,8 +137,20 @@ void display_zone_list(t_zone *zone) {
 	}
 }
 
+void multiple_malloc(int size) {
+	void *ptr;
+
+	ptr = ft_malloc(size);
+	// ptr = malloc(size);
+	// printf("%p\n", ptr);
+	// display_memory_zone((t_zone*)first_addr);
+	// printf("__________________\n" );
+
+}
+
 int main(int argc, char **argv) {
 	int nb;
+	int nb_malloc;
 	void *ptr;
 	void *ptr2;
 	void *ptr3;
@@ -148,45 +160,51 @@ int main(int argc, char **argv) {
 	// void *ptr4;
 
 	nb = atoi(argv[1]);
+	nb_malloc = atoi(argv[2]);
 	// first_addr = mmap(0, LIMI
 	// printf("%lu\n", sizeof(t_block));
 
 	// void *ptr;
 	// first_addr = create_empty_zone(TINY_BLOCK);
 	first_addr = NULL;
-	printf("nb: %d\n", nb);
-	ptr = ft_malloc(nb);
-	printf("%p\n", ptr);
-	// display_memory_block(ptr);
-	display_memory_zone((t_zone*)first_addr);
-	printf("__________________\n" );
-
-	ptr2 = ft_malloc(nb);
-	printf("%p\n", ptr2);
-	// display_memory_block(ptr);
-	display_memory_zone((t_zone*)first_addr);
-	printf("__________________\n" );
-
-
-
-	ptr3 = ft_malloc(nb);
-	printf("%p\n", ptr3);
-	display_memory_zone((t_zone*)first_addr);
-	printf("__________________\n" );
-
-	ptr4 = ft_malloc(nb);
-	printf("%p\n", ptr4);
-	display_memory_zone((t_zone*)first_addr);
-	printf("__________________\n" );
-	// //
-	// ft_free(ptr4);
+	int i = 0;
+	while (i < nb_malloc) {
+		multiple_malloc(nb);
+		++i;
+	}
+	// printf("nb: %d\n", nb);
+	// ptr = ft_malloc(nb);
+	// printf("%p\n", ptr);
+	// // display_memory_block(ptr);
 	// display_memory_zone((t_zone*)first_addr);
 	// printf("__________________\n" );
 	//
-	ptr5 = ft_malloc(nb);
-	printf("%p\n", ptr5);
-	display_memory_zone((t_zone*)first_addr);
-	printf("__________________\n" );
+	// ptr2 = ft_malloc(nb);
+	// printf("%p\n", ptr2);
+	// // display_memory_block(ptr);
+	// display_memory_zone((t_zone*)first_addr);
+	// printf("__________________\n" );
+	//
+	//
+	//
+	// ptr3 = ft_malloc(nb);
+	// printf("%p\n", ptr3);
+	// display_memory_zone((t_zone*)first_addr);
+	// printf("__________________\n" );
+	//
+	// ptr4 = ft_malloc(nb);
+	// printf("%p\n", ptr4);
+	// display_memory_zone((t_zone*)first_addr);
+	// printf("__________________\n" );
+	// // //
+	// // ft_free(ptr4);
+	// // display_memory_zone((t_zone*)first_addr);
+	// // printf("__________________\n" );
+	// //
+	// ptr5 = ft_malloc(nb);
+	// printf("%p\n", ptr5);
+	// display_memory_zone((t_zone*)first_addr);
+	// printf("__________________\n" );
 
 	//
 	// ptr6 = ft_malloc(nb);
@@ -196,6 +214,21 @@ int main(int argc, char **argv) {
 	//
 	// ft_free(ptr6);
 	// display_memory_zone((t_zone*)first_addr);
+
+	// void *ptr7 = ft_malloc(nb);
+	// void *ptr8 = ft_malloc(nb);
+	// void *ptr9 = ft_malloc(nb);
+	// void *ptr10 = ft_malloc(nb);
+	// void *ptr11 = ft_malloc(nb);
+	// void *ptr12 = ft_malloc(nb);
+	// void *ptr13 = ft_malloc(nb);
+	// void *ptr14 = ft_malloc(nb);
+	// void *ptr15 = ft_malloc(nb);
+	//
+	// ft_free(ptr10);
+	// ft_free(ptr11);
+	// ft_free(ptr12);
+	// ft_free(ptr13);
 
 	// ft_free(ptr);
 	// ft_free(ptr2);
@@ -211,6 +244,7 @@ int main(int argc, char **argv) {
 
 	printf("__________________\n" );
 	display_zone_list((t_zone*)first_addr);
+	while(42);
 
 	// ft_free(ptr2);
 	// ptr3 = ft_malloc(nb);

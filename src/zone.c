@@ -107,16 +107,16 @@ t_bool	is_space_available_zone(t_zone *zone, size_t size_data_block) {
 
 	last_block = get_last_block(zone);
 
-	printf("current_zone: %p\n", zone->current_zone);
-	printf("last_block: %p\n", last_block->current_addr);
+	// printf("current_zone: %p\n", zone->current_zone);
+	// printf("last_block: %p\n", last_block->current_addr);
 
 	max_addr = zone->current_zone + zone->size;
 
-	printf("max_addr: %p\n", max_addr);
+	// printf("max_addr: %p\n", max_addr);
 
 	next_addr = last_block->current_addr + sizeof(t_block) + size_data_block;
 
-	printf("next_addr: %p\n", next_addr);
+	// printf("next_addr: %p\n", next_addr);
 
 	if (next_addr > max_addr) {
 		return FALSE;
