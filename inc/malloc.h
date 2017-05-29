@@ -24,6 +24,7 @@
 # define MIN_ALLOCATION_PER_ZONE 100
 
 typedef struct s_block {
+	void					*zone;
 	void					*current_addr;
 	void					*next_addr;
 	void					*ptr_data;
@@ -92,7 +93,7 @@ void release_empty_zone(t_zone *first_zone);
 * File: block.c.
 */
 
-t_block *init_one_block(t_block *block_ptr, size_t size_data);
+t_block	*init_one_block(t_zone *zone, t_block *block_ptr, size_t size_data);
 void		set_block_to_used(t_block *block, size_t size_data);
 t_block *get_last_block(t_zone *zone);
 // t_block	*add_new_block(t_zone *zone, t_block *block);
