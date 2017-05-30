@@ -153,9 +153,9 @@ t_bool right_type_zone(t_zone *zone, size_t size_data) {
 	if (zone && zone->type) {
 		if (zone->type == 'T' && size_data <= TINY_BLOCK) {
 			result = TRUE;
-		} else if (zone->type == 'S' && size_data <= SMALL_BLOCK) {
+		} else if (zone->type == 'S' && size_data > TINY_BLOCK && size_data <= SMALL_BLOCK) {
 			result = TRUE;
-		} else if (zone->type == 'L' && size_data > LIMIT_SMALL) {
+		} else if (zone->type == 'L' && size_data > SMALL_BLOCK) {
 			result = TRUE;
 		} else {
 			result = FALSE;

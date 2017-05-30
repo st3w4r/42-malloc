@@ -169,7 +169,7 @@ void *ft_malloc(size_t size) {
     }
   }
   set_block_to_used(block, size);
-  return block;
+  return block->ptr_data;
 }
 
 // void *ft_malloc(size_t size) {

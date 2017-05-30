@@ -27,9 +27,9 @@ typedef struct s_block {
 	void					*zone;
 	void					*current_addr;
 	void					*next_addr;
-	void					*ptr_data;
 	size_t				size_data;
 	unsigned int	is_free;
+	void					*ptr_data;
 	// char					type;
 	// size_t				size_data;
 	// size_t				size_block;
@@ -59,6 +59,11 @@ void *first_addr;
 // 	void *next_page;
 // 	char page_type;
 // }
+
+/**
+* File: realloc.c
+*/
+void	*ft_realloc(void *ptr, size_t size);
 
 /**
  * File: malloc.c
