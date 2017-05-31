@@ -248,10 +248,10 @@ int main(int argc, char **argv) {
 	ptr = ft_malloc(nb);
 	ptr2 = ft_malloc(nb);
 
-	ptr = strcpy(ptr, "Hello!\0");
+	// ptr = strcpy(ptr, "Hello!\0");
 	// printf("%zu\n", ((t_block*)ptr)->size_data);
 	// printf("Ptr data: %p\n", ptr);
-	printf("Sentence: %s\n", ptr);
+	// printf("Sentence: %s\n", ptr);
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
 
@@ -260,8 +260,8 @@ int main(int argc, char **argv) {
 	// display_memory_zone((t_zone*)first_addr);
 	// printf("__________________\n" );
 
-	ptr = ft_realloc(ptr, 3);
-	printf("Sentence: %s\n", ptr);
+	ptr = ft_realloc(ptr, 30);
+	// printf("Sentence: %s\n", ptr);
 
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
