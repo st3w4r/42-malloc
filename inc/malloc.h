@@ -21,7 +21,7 @@
 # define TINY_BLOCK 1000
 # define SMALL_BLOCK 10000
 
-# define MIN_ALLOCATION_PER_ZONE 100
+# define MIN_ALLOCATION_PER_ZONE 1
 
 typedef struct s_block {
 	void					*zone;

@@ -111,13 +111,16 @@ t_bool	is_space_available_zone(t_zone *zone, size_t size_data_block) {
 	// printf("last_block: %p\n", last_block->current_addr);
 
 	max_addr = zone->current_zone + zone->size;
+	// printf("Current addr: %p\n", zone->current_zone);
+	// printf("Max addr: %p\n", max_addr);
 
-	// printf("max_addr: %p\n", max_addr);
-
-	next_addr = last_block->current_addr + sizeof(t_block) + size_data_block;
+	// next_addr = last_block->current_addr + sizeof(t_block) + size_data_block;
+	next_addr = last_block->ptr_data + last_block->size_data + sizeof(t_block) + size_data_block;
+	// next_addr = last_block->current_addr + sizeof(t_block) + last_block->size_data + sizeof(t_block) + size_data_block;
 
 	// printf("next_addr: %p\n", next_addr);
-
+	// printf("max_addr: %p\n", max_addr);
+	// printf("Size data block: %zu\n", size_data_block);
 	if (next_addr > max_addr) {
 		return FALSE;
 	}

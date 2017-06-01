@@ -102,6 +102,7 @@ void display_memory_block(void *addr) {
 		printf("size_data: %lu\n", block->size_data);
 		// printf("size_block: %lu\n", block->size_block);
 		printf("ptr_data: %p\n", block->ptr_data);
+		printf("end block: %p\n", block->ptr_data + block->size_data);
 		printf("Counter: %d\n", i++);
 		block = block->next_addr;
 	}
@@ -132,7 +133,7 @@ void display_zone_list(t_zone *zone) {
 	i = 0;
 	current_zone = zone;
 	while (current_zone != NULL) {
-		printf("Zone: %i Type: %c Size: %zu Addr: %p \n", i, current_zone->type, current_zone->size, current_zone);
+		printf("Zone: %i Type: %c Size: %zu Addr: %p MaxAddr: %p\n", i, current_zone->type, current_zone->size, current_zone, current_zone->current_zone + current_zone->size);
 		i++;
 		current_zone = current_zone->next_zone;
 	}
@@ -171,12 +172,17 @@ int main(int argc, char **argv) {
 	/**
 	// Multiple malloc
 	*/
-	// int i = 0;
-	// while (i < nb_malloc) {
-	// 	multiple_malloc(nb);
-	// 	++i;
-	// }
+	int i = 0;
+	while (i < nb_malloc) {
+		multiple_malloc(nb);
+		++i;
+	}
+	// ft_malloc(40);
+	display_memory_zone((t_zone*)first_addr);
+	printf("__________________\n" );
+	display_zone_list((t_zone*)first_addr);
 
+	return 0;
 
 	// printf("nb: %d\n", nb);
 	// ptr = ft_malloc(nb);
