@@ -32,8 +32,9 @@ t_zone	*create_empty_zone(size_t block_size, char type) {
 	}
 
 	ptr_zone = allocate_zone(allocation_size);
-	init_zone(ptr_zone, allocation_size, block_size, type);
-
+	if (ptr_zone != NULL) {
+		init_zone(ptr_zone, allocation_size, block_size, type);
+	}
 	return ptr_zone;
 }
 
@@ -72,6 +73,9 @@ void *allocate_zone(size_t allocation_size) {
 
 	ptr_zone = mmap(0, allocation_size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
 
+	if (ptr_zone == MAP_FAILED) {
+		return NULL;
+	}
 	return ptr_zone;
 }
 

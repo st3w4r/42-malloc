@@ -3,6 +3,7 @@
 
 # include <sys/mman.h>
 # include <unistd.h>
+// # include "libft.h"
 
 // Beginning Remove
 # include <stdio.h>
@@ -43,6 +44,12 @@ typedef struct s_zone {
 typedef unsigned int t_bool;
 
 void *first_addr;
+
+/**
+* File: show_alloc_mem.c
+*/
+
+void	show_alloc_mem();
 
 /**
 * File: realloc.c

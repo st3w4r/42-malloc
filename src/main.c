@@ -144,7 +144,6 @@ void multiple_malloc(int size) {
 
 	ptr = ft_malloc(size);
 	// ptr = malloc(size);
-	// printf("%p\n", ptr);
 	// display_memory_zone((t_zone*)first_addr);
 	// printf("__________________\n" );
 
@@ -172,15 +171,23 @@ int main(int argc, char **argv) {
 	/**
 	// Multiple malloc
 	*/
-	// int i = 0;
-	// while (i < nb_malloc) {
-	// 	multiple_malloc(nb);
-	// 	++i;
-	// }
-	// // ft_malloc(40);
-	// display_memory_zone((t_zone*)first_addr);
-	// printf("__________________\n" );
-	// display_zone_list((t_zone*)first_addr);
+	int i = 0;
+	while (i < nb_malloc) {
+		multiple_malloc(nb);
+		++i;
+	}
+	// ft_malloc(40);
+	display_memory_zone((t_zone*)first_addr);
+	printf("__________________\n" );
+	display_zone_list((t_zone*)first_addr);
+
+	return 0;
+
+	// printf("%d\n", nb);
+	// ptr = ft_malloc(42);
+	// printf("Ptr: %p\n", ptr);
+	// ptr = ft_realloc(ptr, nb);
+	// printf("Ptr: %p\n", ptr);
 	//
 	// return 0;
 

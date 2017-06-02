@@ -27,12 +27,20 @@ PATH_INC_LIBFT = ./libft/includes/
 INCLUDES = -I $(PATH_INC) -I $(PATH_INC_LIBFT)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Ofast $(INCLUDES)
+#CFLAGS = -Wall -Wextra -Werror -Ofast $(INCLUDES)
+CFLAGS = $(INCLUDES)
 # LIBS = -L libft/ -lft
 
 #_____________FILES____________#
 
-SRC = main.c
+SRC =	main.c \
+	block.c \
+	free.c \
+	main.c \
+	malloc.c \
+	realloc.c \
+	show_alloc_mem.c \
+	zone.c
 
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))

@@ -34,6 +34,9 @@ t_zone *init_first_zone(size_t size_data) {
   first_zone = (t_zone*)first_addr;
   if (first_zone == NULL) {
     first_zone = get_new_zone(size_data);
+    if (first_zone == NULL) {
+      return NULL;
+    }
     first_addr = first_zone;
     init_one_block(first_zone, first_zone->first_block, size_data);
   }
@@ -46,12 +49,14 @@ void *ft_malloc(size_t size) {
   t_block *block;
 
   first_zone = init_first_zone(size);
+  if (first_zone == NULL) return NULL;
   current_zone = first_zone;
   block = NULL;
   while (block == NULL) {
     current_zone = get_right_zone(current_zone, size);
     if (current_zone == NULL) {
       current_zone = add_new_zone(first_zone, size);
+      if (current_zone == NULL) return NULL;
       init_one_block(current_zone, current_zone->first_block, size);
     }
     block = get_reusable_block(current_zone->first_block, size);
