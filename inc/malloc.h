@@ -21,7 +21,7 @@
 # define TINY_BLOCK 1000
 # define SMALL_BLOCK 10000
 
-# define MIN_ALLOCATION_PER_ZONE 1
+# define MIN_ALLOCATION_PER_ZONE 100
 
 typedef struct s_block {
 	void					*zone;
@@ -30,9 +30,6 @@ typedef struct s_block {
 	size_t				size_data;
 	unsigned int	is_free;
 	void					*ptr_data;
-	// char					type;
-	// size_t				size_data;
-	// size_t				size_block;
 } t_block;
 
 typedef struct s_zone {
@@ -46,19 +43,6 @@ typedef struct s_zone {
 typedef unsigned int t_bool;
 
 void *first_addr;
-
-
-// typedef struct s_zone_table {
-//   t_zone *tiny_zone;
-//   t_zone *small_zone;
-//   t_zone *large_zone;
-// } t_zone_table;
-
-// struct page_table = {
-// 	void *first_addr;
-// 	void *next_page;
-// 	char page_type;
-// }
 
 /**
 * File: realloc.c

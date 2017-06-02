@@ -40,18 +40,12 @@ t_zone	*create_empty_zone(size_t block_size, char type) {
 
 size_t get_allocation_size(size_t block_size) {
 	size_t nb_page;
-	size_t block_header_size;
 	size_t allocation_size;
 	size_t page_size;
 	void *ptr_zone;
 
 	page_size = getpagesize();
-	block_header_size = sizeof(t_block);
-	// printf("block_header_size: %lu\n", block_header_size);
-	// printf("block_size: %lu\n", block_size);
-
-	nb_page = get_number_of_pages(page_size, block_header_size + block_size);
-	// printf("nb_page: %lu\n", nb_page);
+	nb_page = get_number_of_pages(page_size, sizeof(t_block) + block_size);
 	allocation_size = nb_page * page_size;
 
 	return allocation_size;
@@ -76,7 +70,6 @@ size_t	get_number_of_pages(size_t page_size, size_t block_size) {
 void *allocate_zone(size_t allocation_size) {
 	void *ptr_zone;
 
-	// printf("allocation_size: %lu\n", allocation_size);
 	ptr_zone = mmap(0, allocation_size, PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
 
 	return ptr_zone;
@@ -104,23 +97,10 @@ t_bool	is_space_available_zone(t_zone *zone, size_t size_data_block) {
 	void		*max_addr;
 	void		*next_addr;
 
-
 	last_block = get_last_block(zone);
-
-	// printf("current_zone: %p\n", zone->current_zone);
-	// printf("last_block: %p\n", last_block->current_addr);
-
 	max_addr = zone->current_zone + zone->size;
-	// printf("Current addr: %p\n", zone->current_zone);
-	// printf("Max addr: %p\n", max_addr);
+	next_addr = last_block->current_addr + sizeof(t_block) + last_block->size_data + sizeof(t_block) + size_data_block;
 
-	// next_addr = last_block->current_addr + sizeof(t_block) + size_data_block;
-	next_addr = last_block->ptr_data + last_block->size_data + sizeof(t_block) + size_data_block;
-	// next_addr = last_block->current_addr + sizeof(t_block) + last_block->size_data + sizeof(t_block) + size_data_block;
-
-	// printf("next_addr: %p\n", next_addr);
-	// printf("max_addr: %p\n", max_addr);
-	// printf("Size data block: %zu\n", size_data_block);
 	if (next_addr > max_addr) {
 		return FALSE;
 	}
@@ -173,9 +153,6 @@ t_bool right_type_zone(t_zone *zone, size_t size_data) {
 t_bool zone_is_empty(t_zone *zone) {
 	t_block *block;
 
-	// if (zone == NULL) {
-	// 	return FALSE;
-	// }
 	block = zone->first_block;
 	while (block != NULL) {
 		if (block->is_free == FALSE) {
@@ -215,21 +192,3 @@ void release_empty_zone(t_zone *first_zone) {
 		current_zone = next_zone;
 	}
 }
-// void add_zone_to_tail(t_zone current_zone, t_zone new_zone) {
-// 	current_zone->next_zone = new_zone;
-// }
-
-// void init_zone(void *first_zone_addr, size_t allocation_size, size_t block_size) {
-// 	size_t total_size;
-// 	t_block *block;
-//
-// 	total_size = 0;
-//
-// 	while (total_size + (block_size + sizeof(t_block)) <= allocation_size) {
-// 		block = init_one_block(first_zone_addr + total_size, block_size);
-// 		total_size += sizeof(t_block) + block_size;
-// 		block->next_addr = first_zone_addr + total_size;
-// 	}
-// 	block->next_addr = NULL;
-//
-// }
