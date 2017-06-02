@@ -29,14 +29,13 @@ INCLUDES = -I $(PATH_INC) -I $(PATH_INC_LIBFT)
 CC = cc
 #CFLAGS = -Wall -Wextra -Werror -Ofast $(INCLUDES)
 CFLAGS = $(INCLUDES)
-# LIBS = -L libft/ -lft
+LIBS = -L libft/ -lft
 
 #_____________FILES____________#
 
 SRC =	main.c \
 	block.c \
 	free.c \
-	main.c \
 	malloc.c \
 	realloc.c \
 	show_alloc_mem.c \
@@ -52,11 +51,12 @@ OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(OBJ) -o $(NAME)
+	make -C libft/
+	$(CC) $(OBJ) -o $(NAME) $(LIBS)
 
 #____CLEAN____#
 
-clean: 
+clean:
 	rm -f $(OBJ)
 
 #___FCLEAN___#

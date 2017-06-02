@@ -180,7 +180,9 @@ int main(int argc, char **argv) {
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
 	display_zone_list((t_zone*)first_addr);
+	printf("__________________\n" );
 
+	show_alloc_mem();
 	return 0;
 
 	// printf("%d\n", nb);

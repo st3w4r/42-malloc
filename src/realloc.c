@@ -1,6 +1,6 @@
 #include "malloc.h"
 
-void		*ft_memcpy(void *dst, const void *src, size_t dst_size, size_t src_size)
+void		*copy_data_size(void *dst, const void *src, size_t dst_size, size_t src_size)
 {
 	char		*char_dst;
 	const char	*char_src;
@@ -18,7 +18,7 @@ void		*ft_memcpy(void *dst, const void *src, size_t dst_size, size_t src_size)
 }
 
 void	*copy_data(t_block *block, t_block *new_block) {
-	return ft_memcpy(new_block->ptr_data, block->ptr_data,
+	return copy_data_size(new_block->ptr_data, block->ptr_data,
 									new_block->size_data, block->size_data);
 }
 
