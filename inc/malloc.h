@@ -4,6 +4,7 @@
 # include "libft.h"
 # include <sys/mman.h>
 # include <unistd.h>
+# include <stdint.h>
 
 // Beginning Remove
 # include <stdio.h>

@@ -11,13 +11,13 @@
 
 #include "malloc.h"
 
-void ft_puthexa(u_int nb) {
-  char hex_revert[8];
-  int hex[8];
+void ft_puthexa(uint64_t nb) {
+  char hex_revert[16];
+  int hex[16];
   int i;
 
-  ft_bzero(hex_revert, 8);
-  ft_bzero(hex, 8);
+  ft_bzero(hex_revert, 16);
+  ft_bzero(hex, 16);
   i = 0;
   while (nb) {
     hex[i] = nb % 16;
@@ -37,7 +37,7 @@ void ft_puthexa(u_int nb) {
 }
 
 void display_addr(void *addr) {
-  ft_puthexa((u_int)addr);
+  ft_puthexa((uint64_t)addr);
   ft_putchar('\n');
   // printf("%d\n", convert_addr);
   // printf("0x%X\n", convert_addr);
@@ -58,9 +58,9 @@ void show_memory_block(void *addr) {
 
 	block = (t_block*)addr;
 	while (block != NULL) {
-    ft_puthexa((u_int)block->ptr_data);
+    ft_puthexa((uint64_t)block->ptr_data);
     ft_putstr(" - ");
-    ft_puthexa((u_int)block->ptr_data + (u_int)block->size_data);
+    ft_puthexa((uint64_t)block->ptr_data + (uint64_t)block->size_data);
     ft_putstr(" : ");
     display_octets(block);
     ft_putchar('\n');
