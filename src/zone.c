@@ -92,6 +92,7 @@ void init_zone(void *first_zone_addr,
 	zone->first_block = first_zone_addr + sizeof(t_zone);
 	zone->current_zone = first_zone_addr;
 	zone->next_zone = NULL;
+	zone->previous_zone = NULL;
 	zone->size = allocation_size;
 	zone->type = type;
 }
@@ -117,6 +118,7 @@ t_bool	is_space_available_zone(t_zone *zone, size_t size_data_block) {
 */
 t_zone  *add_new_zone(t_zone *zone, size_t size_data) {
 	t_zone *current_zone;
+	t_zone *next_zone;
 
 	if (zone == NULL) {
 		return NULL;
@@ -126,6 +128,10 @@ t_zone  *add_new_zone(t_zone *zone, size_t size_data) {
 		current_zone = current_zone->next_zone;
 	}
 	current_zone->next_zone = get_new_zone(size_data);
+	if (current_zone->next_zone != NULL) {
+		next_zone = current_zone->next_zone;
+		next_zone->previous_zone = current_zone;
+	}
 	return current_zone->next_zone;
 }
 

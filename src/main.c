@@ -171,19 +171,19 @@ int main(int argc, char **argv) {
 	/**
 	// Multiple malloc
 	*/
-	int i = 0;
-	while (i < nb_malloc) {
-		multiple_malloc(nb);
-		++i;
-	}
-	// ft_malloc(40);
-	display_memory_zone((t_zone*)first_addr);
-	printf("__________________\n" );
-	display_zone_list((t_zone*)first_addr);
-	printf("__________________\n" );
+	// int i = 0;
+	// while (i < nb_malloc) {
+	// 	multiple_malloc(nb);
+	// 	++i;
+	// }
+	// // ft_malloc(40);
+	// display_memory_zone((t_zone*)first_addr);
+	// printf("__________________\n" );
+	// display_zone_list((t_zone*)first_addr);
+	// printf("__________________\n" );
 
-	show_alloc_mem();
-	return 0;
+	// show_alloc_mem();
+	// return 0;
 
 	// printf("%d\n", nb);
 	// ptr = ft_malloc(42);
@@ -260,8 +260,11 @@ int main(int argc, char **argv) {
 	// printf("__________________\n" );
 
 	// Realloc
-	ptr = ft_malloc(nb);
-	ptr2 = ft_malloc(nb);
+	ft_malloc(48847);
+	ft_malloc(3725);
+
+	ptr = ft_malloc(42);
+	ptr2 = ft_realloc(ptr, 84);
 
 	ptr = strcpy(ptr, "Hello!\0");
 	// printf("%zu\n", ((t_block*)ptr)->size_data);
@@ -270,12 +273,12 @@ int main(int argc, char **argv) {
 	display_memory_zone((t_zone*)first_addr);
 	printf("__________________\n" );
 
-	ptr = ft_realloc(ptr, 5000);
+	// ptr = ft_realloc(ptr, 5000);
 
 	// display_memory_zone((t_zone*)first_addr);
 	// printf("__________________\n" );
 
-	ptr = ft_realloc(ptr, 3);
+	// ptr = ft_realloc(ptr, 42);
 	printf("Sentence: %s\n", ptr);
 
 	display_memory_zone((t_zone*)first_addr);
@@ -287,6 +290,10 @@ int main(int argc, char **argv) {
 	printf("__________________\n" );
 	display_zone_list((t_zone*)first_addr);
 	// while(42);
+
+
+
+	show_alloc_mem();
 
 	// ft_free(ptr2);
 	// ptr3 = ft_malloc(nb);

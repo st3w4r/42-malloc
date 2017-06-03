@@ -58,9 +58,9 @@ void show_memory_block(void *addr) {
 
 	block = (t_block*)addr;
 	while (block != NULL) {
-    ft_puthexa((u_int)block->current_addr);
+    ft_puthexa((u_int)block->ptr_data);
     ft_putstr(" - ");
-    ft_puthexa((u_int)block->current_addr + (u_int)block->size_data);
+    ft_puthexa((u_int)block->ptr_data + (u_int)block->size_data);
     ft_putstr(" : ");
     display_octets(block);
     ft_putchar('\n');
@@ -73,6 +73,10 @@ void show_memory_zone(t_zone *zone) {
 	t_block *block;
 
 	current_zone = zone;
+  while (current_zone != NULL && current_zone->next_zone != NULL) {
+    current_zone = current_zone->next_zone;
+  }
+
 	while (current_zone != NULL) {
     if (current_zone->type == 'T') {
       ft_putstr("TINY : ");
@@ -83,7 +87,7 @@ void show_memory_zone(t_zone *zone) {
     }
     display_addr(current_zone->current_zone);
     show_memory_block(current_zone->first_block);
-		current_zone = current_zone->next_zone;
+		current_zone = current_zone->previous_zone;
 	}
 }
 

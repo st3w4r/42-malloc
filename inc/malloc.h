@@ -37,6 +37,7 @@ typedef struct s_zone {
 	t_block	*first_block;
 	void		*current_zone;
 	void		*next_zone;
+	void		*previous_zone;
 	size_t	size;
 	char		type;
 } t_zone;
