@@ -34,12 +34,15 @@ LIBS = -L libft/ -lft
 #_____________FILES____________#
 
 SRC =	main.c \
-	block.c \
-	free.c \
 	malloc.c \
 	realloc.c \
-	show_alloc_mem.c \
-	zone.c
+	free.c \
+	block_initialisation.c \
+	block_creation.c \
+	zone_initialisation.c \
+	zone_creation.c \
+	zone_deletion.c \
+	show_alloc_mem.c
 
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))

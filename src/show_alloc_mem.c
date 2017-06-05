@@ -92,7 +92,7 @@ void show_memory_zone(t_zone *zone) {
 }
 
 void show_total(t_zone *zone) {
-  u_int total;
+  uint64_t total;
   t_zone *current_zone;
 	t_block *block;
 

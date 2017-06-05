@@ -1,21 +1,10 @@
 #include "malloc.h"
 
-t_block *init_one_block(t_zone *zone, void *block_ptr, size_t size_data) {
-	t_block *block;
-
-	block = (t_block*)block_ptr;
-	block->zone = zone;
-	block->current_addr = block_ptr;
-	block->next_addr = NULL;
-	block->is_free = TRUE;
-	block->size_data = size_data;
-	block->ptr_data = block_ptr + sizeof(t_block);
-	return block;
-}
-
-void set_block_to_used(t_block *block, size_t size_data) {
-  block->size_data = size_data;
-  block->is_free = FALSE;
+t_bool	is_space_available_block(t_block *block, size_t size_data) {
+	if (block != NULL && block->size_data >= size_data) {
+		return TRUE;
+	}
+	return FALSE;
 }
 
 t_block *get_last_block(t_zone *zone) {
@@ -41,13 +30,6 @@ t_block *get_block_unused(t_block *block) {
   return current_block;
 }
 
-t_bool	is_space_available_block(t_block *block, size_t size_data) {
-	if (block != NULL && block->size_data >= size_data) {
-		return TRUE;
-	}
-	return FALSE;
-}
-
 /*
 ** Get a unsued block and a block with engouh space, if nothing available return NULL
 */
@@ -62,7 +44,13 @@ t_block *get_reusable_block(t_block *block, size_t size_data) {
 	return current_block;
 }
 
+t_block *add_block_to_zone(t_zone *zone, size_t size_data) {
+  t_block *block;
+  t_block *last_block;
 
-void release_block(t_block *block) {
-  block->is_free = TRUE;
+  last_block = get_last_block(zone);
+  block = last_block->current_addr + sizeof(t_block) + last_block->size_data;
+  block = init_one_block(zone, block, size_data);
+  last_block->next_addr = block;
+  return block;
 }
