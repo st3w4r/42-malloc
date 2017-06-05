@@ -30,11 +30,13 @@ void	*copy_data_size(void *dst, const void *src, size_t dst_size,
 	return (dst);
 }
 
-void	*copy_data(t_block *block, t_block *new_block)
-{
-	return (copy_data_size(new_block->ptr_data, block->ptr_data,
-									new_block->size_data, block->size_data));
-}
+/*
+** void	*copy_data(t_block *block, t_block *new_block)
+** {
+** 	return (copy_data_size(new_block->ptr_data, block->ptr_data,
+** 									new_block->size_data, block->size_data));
+** }
+*/
 
 t_bool	block_fusion(t_block *block, size_t new_size)
 {
@@ -56,6 +58,26 @@ t_bool	block_fusion(t_block *block, size_t new_size)
 		}
 	}
 	return (FALSE);
+}
+
+t_block	*new_allocation(t_block *block, size_t new_size)
+{
+	t_block	*new_block;
+	void	*ptr_data;
+
+	ptr_data = ft_malloc(new_size);
+	if (ptr_data == NULL)
+	{
+		return (NULL);
+	}
+	new_block = (t_block *)(ptr_data - sizeof(t_block));
+	if (new_block != NULL)
+	{
+		copy_data_size(new_block->ptr_data, block->ptr_data,
+										new_block->size_data, block->size_data);
+		ft_free(block->ptr_data);
+	}
+	return (new_block);
 }
 
 t_block	*resize_allocation(t_block *block, size_t new_size)
@@ -80,15 +102,7 @@ t_block	*resize_allocation(t_block *block, size_t new_size)
 	}
 	else
 	{
-		ptr_data = ft_malloc(new_size);
-		if (ptr_data == NULL)
-			return (NULL);
-		new_block = (t_block *)(ptr_data - sizeof(t_block));
-		if (new_block != NULL)
-		{
-			copy_data(block, new_block);
-			ft_free(block->ptr_data);
-		}
+		new_block = new_allocation(block, new_size);
 	}
 	return (new_block);
 }
@@ -107,20 +121,12 @@ void	*ft_realloc(void *ptr, size_t size)
 	if (right_type_zone(current_zone, size) == TRUE)
 	{
 		new_block = resize_allocation(current_block, size);
-		if (new_block == NULL)
-			return (NULL);
 	}
 	else
 	{
-		ptr_data = ft_malloc(size);
-		if (ptr_data == NULL)
-			return (NULL);
-		new_block = (t_block *)(ptr_data - sizeof(t_block));
-		if (new_block != NULL)
-		{
-			copy_data(current_block, new_block);
-			ft_free(current_block->ptr_data);
-		}
+		new_block = new_allocation(current_block, size);
 	}
+	if (new_block == NULL)
+		return (NULL);
 	return (new_block->ptr_data);
 }
