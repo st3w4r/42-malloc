@@ -12,9 +12,11 @@
 
 #include "malloc.h"
 
-void ft_free(void *ptr) {
-  if (ptr != NULL && first_addr != NULL) {
-    release_block((t_block*)(ptr - sizeof(t_block)));
-    release_empty_zone((t_zone *)first_addr);
-  }
+void	ft_free(void *ptr)
+{
+	if (ptr != NULL && g_first_addr != NULL)
+	{
+		release_block((t_block*)(ptr - sizeof(t_block)));
+		release_empty_zone((t_zone *)g_first_addr);
+	}
 }

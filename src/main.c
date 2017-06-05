@@ -78,7 +78,7 @@ int main(int argc, char **argv) {
 // }
 
 // void ft_get_page(size_t size) {
-// 	void *first_addr;
+// 	void *g_first_addr;
 // 	int page_numbers;
 // 	int page_size;
 //
@@ -94,7 +94,7 @@ int main(int argc, char **argv) {
 //
 // 	}
 //
-// 	first_addr = mmap(0, ,
+// 	g_first_addr = mmap(0, ,
 //
 // 	}
 // }
@@ -156,7 +156,7 @@ void multiple_malloc(int size) {
 
 	ptr = ft_malloc(size);
 	// ptr = malloc(size);
-	// display_memory_zone((t_zone*)first_addr);
+	// display_memory_zone((t_zone*)g_first_addr);
 	// printf("__________________\n" );
 
 }
@@ -174,12 +174,12 @@ int main(int argc, char **argv) {
 
 	nb = atoi(argv[1]);
 	nb_malloc = atoi(argv[2]);
-	// first_addr = mmap(0, LIMI
+	// g_first_addr = mmap(0, LIMI
 	// printf("%lu\n", sizeof(t_block));
 
 	// void *ptr;
-	// first_addr = create_empty_zone(TINY_BLOCK);
-	// first_addr = NULL;
+	// g_first_addr = create_empty_zone(TINY_BLOCK);
+	// g_first_addr = NULL;
 
 	/**
 	* Realloc feature
@@ -196,7 +196,7 @@ int main(int argc, char **argv) {
 	// // ptr = memset(ptr, '\0',87);
 	// // ptr = memset(ptr, 'Y', 87);
 	// printf("Sentence: %s\n", ptr);
-	// display_memory_zone((t_zone*)first_addr);
+	// display_memory_zone((t_zone*)g_first_addr);
 	// printf("__________________\n" );
 	// return 0;
 	/**
@@ -208,9 +208,9 @@ int main(int argc, char **argv) {
 		++i;
 	}
 	// ft_malloc(40);
-	display_memory_zone((t_zone*)first_addr);
+	display_memory_zone((t_zone*)g_first_addr);
 	printf("__________________\n" );
-	display_zone_list((t_zone*)first_addr);
+	display_zone_list((t_zone*)g_first_addr);
 	printf("__________________\n" );
 
 	show_alloc_mem();
@@ -250,7 +250,7 @@ int main(int argc, char **argv) {
 	// printf("%p\n", ptr);
 	// ptr = strcpy(ptr, "Hello!\0");
 	// printf("Sentence: %s\n", ptr);
-	// display_memory_zone((t_zone*)first_addr);
+	// display_memory_zone((t_zone*)g_first_addr);
 	// printf("__________________\n" );
 	return 0;
 
@@ -266,44 +266,44 @@ int main(int argc, char **argv) {
 	// ptr = ft_malloc(nb);
 	// printf("%p\n", ptr);
 	// // display_memory_block(ptr);
-	// display_memory_zone((t_zone*)first_addr);
+	// display_memory_zone((t_zone*)g_first_addr);
 	// printf("__________________\n" );
 
 	// ptr2 = ft_malloc(nb);
 	// printf("%p\n", ptr2);
 	// // display_memory_block(ptr);
-	// display_memory_zone((t_zone*)first_addr);
+	// display_memory_zone((t_zone*)g_first_addr);
 	// printf("__________________\n" );
 	//
 	//
 	//
 	// ptr3 = ft_malloc(nb);
 	// printf("%p\n", ptr3);
-	// display_memory_zone((t_zone*)first_addr);
+	// display_memory_zone((t_zone*)g_first_addr);
 	// printf("__________________\n" );
 	//
 	// ptr4 = ft_malloc(nb);
 	// printf("%p\n", ptr4);
-	// display_memory_zone((t_zone*)first_addr);
+	// display_memory_zone((t_zone*)g_first_addr);
 	// printf("__________________\n" );
 	// // //
 	// // ft_free(ptr4);
-	// // display_memory_zone((t_zone*)first_addr);
+	// // display_memory_zone((t_zone*)g_first_addr);
 	// // printf("__________________\n" );
 	// //
 	// ptr5 = ft_malloc(nb);
 	// printf("%p\n", ptr5);
-	// display_memory_zone((t_zone*)first_addr);
+	// display_memory_zone((t_zone*)g_first_addr);
 	// printf("__________________\n" );
 
 	//
 	// ptr6 = ft_malloc(nb);
 	// printf("%p\n", ptr6);
-	// display_memory_zone((t_zone*)first_addr);
+	// display_memory_zone((t_zone*)g_first_addr);
 	// printf("__________________\n" );
 	//
 	// ft_free(ptr6);
-	// display_memory_zone((t_zone*)first_addr);
+	// display_memory_zone((t_zone*)g_first_addr);
 
 	// void *ptr7 = ft_malloc(nb);
 	// void *ptr8 = ft_malloc(nb);
@@ -325,7 +325,7 @@ int main(int argc, char **argv) {
 	// ft_free(ptr3);
 	// ft_free(ptr4);
 	// ft_free(ptr5);
-	// display_memory_zone((t_zone*)first_addr);
+	// display_memory_zone((t_zone*)g_first_addr);
 	// printf("__________________\n" );
 
 	// Realloc
@@ -339,25 +339,25 @@ int main(int argc, char **argv) {
 	// printf("%zu\n", ((t_block*)ptr)->size_data);
 	// printf("Ptr data: %p\n", ptr);
 	printf("Sentence: %s\n", ptr);
-	display_memory_zone((t_zone*)first_addr);
+	display_memory_zone((t_zone*)g_first_addr);
 	printf("__________________\n" );
 
 	// ptr = ft_realloc(ptr, 5000);
 
-	// display_memory_zone((t_zone*)first_addr);
+	// display_memory_zone((t_zone*)g_first_addr);
 	// printf("__________________\n" );
 
 	// ptr = ft_realloc(ptr, 42);
 	printf("Sentence: %s\n", ptr);
 
-	display_memory_zone((t_zone*)first_addr);
+	display_memory_zone((t_zone*)g_first_addr);
 	printf("__________________\n" );
 
 	// Test NULL
 	ft_free(NULL);
 
 	printf("__________________\n" );
-	display_zone_list((t_zone*)first_addr);
+	display_zone_list((t_zone*)g_first_addr);
 	// while(42);
 
 
@@ -369,11 +369,11 @@ int main(int argc, char **argv) {
 	// printf("%p\n", ptr3);
 	// display_memory_block(ptr);
 
-	// display_memory(first_addr);
+	// display_memory(g_first_addr);
 	// printf("__________________\n" );
 	// ptr4 = ft_malloc(nb);
 	// printf("%p\n", &ptr4);
-	// display_memory(first_addr);
+	// display_memory(g_first_addr);
 	// while(42);
 
 }
