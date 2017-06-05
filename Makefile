@@ -28,7 +28,7 @@ INCLUDES = -I $(PATH_INC) -I $(PATH_INC_LIBFT)
 
 CC = cc
 #CFLAGS = -Wall -Wextra -Werror -Ofast $(INCLUDES)
-CFLAGS = $(INCLUDES)
+CFLAGS = $(INCLUDES) -g
 LIBS = -L libft/ -lft
 
 #_____________FILES____________#
