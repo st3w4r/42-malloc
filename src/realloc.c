@@ -72,7 +72,7 @@ void	*ft_realloc(void *ptr, size_t size) {
 	t_zone	*current_zone;
 	void *ptr_data;
 
-	if (ptr == NULL) return NULL;
+	if (ptr == NULL || first_addr == NULL || ptr < first_addr) return NULL;
 	current_block = (t_block*)(ptr - sizeof (t_block));
 	current_zone = (t_zone*)current_block->zone;
 
