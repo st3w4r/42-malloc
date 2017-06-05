@@ -42,6 +42,7 @@ SRC =	main.c \
 	zone_initialisation.c \
 	zone_creation.c \
 	zone_deletion.c \
+	ft_puthexa.c \
 	show_alloc_mem.c
 
 

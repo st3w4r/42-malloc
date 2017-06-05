@@ -112,5 +112,9 @@ t_block	*get_block_unused(t_block *block);
 t_block	*get_reusable_block(t_block *block, size_t size_data);
 t_block	*add_block_to_zone(t_zone *zone, size_t size_data);
 
+/**
+* File: ft_puthexa.c
+*/
+void ft_puthexa(uint64_t nb);
 
 #endif

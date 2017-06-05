@@ -1,49 +1,4 @@
-/*
-  TINY : 0xA0000
-  0xA0020 - 0xA004A : 42 octets
-  0xA006A - 0xA00BE : 84 octets
-  SMALL : 0xAD000
-  0xAD020 - 0xADEAD : 3725 octets
-  LARGE : 0xB0000
-  0xB0020 - 0xBBEEF : 48847 octets
-  Total : 52698 octets
-*/
-
 #include "malloc.h"
-
-void ft_puthexa(uint64_t nb) {
-  char hex_revert[16];
-  int hex[16];
-  int i;
-
-  ft_bzero(hex_revert, 16);
-  ft_bzero(hex, 16);
-  i = 0;
-  while (nb) {
-    hex[i] = nb % 16;
-    if (hex[i] >= 10) {
-      hex_revert[i] = hex[i] + 'A' - 10;
-    } else {
-      hex_revert[i] = hex[i] + '0';
-    }
-    nb /= 16;
-    i++;
-  }
-  ft_putstr("0x");
-  while (i >= 0) {
-    ft_putchar(hex_revert[i]);
-    i--;
-  }
-}
-
-void display_addr(void *addr) {
-  ft_puthexa((uint64_t)addr);
-  ft_putchar('\n');
-  // printf("%d\n", convert_addr);
-  // printf("0x%X\n", convert_addr);
-  // printf("%p\n", addr);
-  // ft_putnbr(str_addr[0]);
-}
 
 void display_octets(t_block *block) {
   size_t size;
@@ -85,7 +40,8 @@ void show_memory_zone(t_zone *zone) {
     } else {
       ft_putstr("LARGE : ");
     }
-    display_addr(current_zone->current_zone);
+    ft_puthexa((uint64_t)current_zone->current_zone);
+    ft_putchar('\n');
     show_memory_block(current_zone->first_block);
 		current_zone = current_zone->previous_zone;
 	}
