@@ -82,7 +82,6 @@ void		*allocate_zone(size_t allocation_size);
 * File: zone_initialisation.c
 */
 void		init_zone(void *first_zone_addr, size_t allocation_size, size_t block_size, char type);
-t_zone	*init_first_zone(size_t size_data);
 t_zone	*add_new_zone(t_zone *zone, size_t size_data);
 t_zone	*get_right_zone(t_zone *first_zone, size_t size_data);
 t_bool	right_type_zone(t_zone *zone, size_t size_data);

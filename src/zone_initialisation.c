@@ -18,21 +18,6 @@ void init_zone(void *first_zone_addr,
 	zone->type = type;
 }
 
-t_zone *init_first_zone(size_t size_data) {
-  t_zone *first_zone;
-
-  first_zone = (t_zone*)first_addr;
-  if (first_zone == NULL) {
-    first_zone = get_new_zone(size_data);
-    if (first_zone == NULL) {
-      return NULL;
-    }
-    first_addr = first_zone;
-    init_one_block(first_zone, first_zone->first_block, size_data);
-  }
-  return first_zone;
-}
-
 /*
 ** Add a new zone as next zone, return the new zone or NULL
 */
