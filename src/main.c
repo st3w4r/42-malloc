@@ -168,6 +168,25 @@ int main(int argc, char **argv) {
 	// void *ptr;
 	// first_addr = create_empty_zone(TINY_BLOCK);
 	first_addr = NULL;
+
+	/**
+	* Realloc feature
+	*/
+	ptr = ft_malloc(30);
+	// ptr2 = ft_malloc(10);
+	// ptr3 = ft_malloc(50);
+	// ptr4 = ft_malloc(50);
+	// ft_free(ptr2);
+
+	ptr = strcpy(ptr, "Hello!\0");
+	ptr = ft_realloc(ptr, 31);
+
+	// ptr = memset(ptr, '\0',87);
+	// ptr = memset(ptr, 'Y', 87);
+	printf("Sentence: %s\n", ptr);
+	display_memory_zone((t_zone*)first_addr);
+	printf("__________________\n" );
+	return 0;
 	/**
 	// Multiple malloc
 	*/

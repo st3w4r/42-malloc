@@ -22,14 +22,38 @@ void	*copy_data(t_block *block, t_block *new_block) {
 									new_block->size_data, block->size_data);
 }
 
+t_bool block_fusion(t_block *block, size_t new_size) {
+	t_block	*block_next;
+	size_t	available_space;
+
+	available_space = 0;
+	if (block != NULL) {
+		block_next = (t_block*)block->next_addr;
+		if (block_next != NULL && block_next->is_free == TRUE) {
+				available_space = (block->size_data
+					+ sizeof(t_block) + block_next->size_data);
+				if (available_space >= new_size) {
+					return TRUE;
+				}
+			}
+		}
+	return FALSE;
+}
+
 t_block	*resize_allocation(t_block *block, size_t new_size) {
 	t_block *new_block;
 	void *ptr_data;
 
 	new_block = NULL;
-	if (block->size_data > new_size) {
+	if (block->size_data >= new_size) {
 		block->size_data = new_size;
 		new_block = block;
+	} else if (block_fusion(block, new_size) == TRUE) {
+		block->size_data = new_size;
+		new_block = block;
+		if ((t_block*)block->next_addr != NULL) {
+			new_block->next_addr = ((t_block*)block->next_addr)->next_addr;
+		}
 	} else {
 		ptr_data = ft_malloc(new_size);
 		if (ptr_data == NULL) return NULL;
