@@ -20,8 +20,11 @@ EXPORT void	free(void *ptr)
 	if (ptr != NULL && g_first_addr != NULL)
 	{
 		block = (t_block*)(ptr - sizeof(t_block));
-		zone = (t_zone*)block->zone;
-		release_block(block);
-		release_empty_zone(zone);
+		if (check_block_exist(block) == TRUE)
+		{
+			zone = (t_zone*)block->zone;
+			release_block(block);
+			release_empty_zone(zone);
+		}
 	}
 }

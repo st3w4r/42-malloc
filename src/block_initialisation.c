@@ -36,3 +36,25 @@ void	release_block(t_block *block)
 {
 	block->is_free = TRUE;
 }
+
+t_bool	check_block_exist(t_block *addr_block)
+{
+	t_zone	*current_zone;
+	t_block	*current_block;
+	t_bool	is_exist;
+
+	is_exist = FALSE;
+	current_zone = (t_zone *)g_first_addr;
+	while (current_zone != NULL)
+	{
+		current_block = current_zone->first_block;
+		while (current_block != NULL) {
+			if (current_block == addr_block) {
+				is_exist = TRUE;
+			}
+			current_block = (t_block*)current_block->next_addr;
+		}
+		current_zone = (t_zone*)current_zone->next_zone;
+	}
+	return (is_exist);
+}

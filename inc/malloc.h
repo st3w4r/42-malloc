@@ -112,6 +112,7 @@ t_block			*init_one_block(t_zone *zone, void *block_ptr,
 								size_t size_data);
 void			set_block_to_used(t_block *block, size_t size_data);
 void			release_block(t_block *block);
+t_bool			check_block_exist(t_block *addr_block);
 
 /*
 ** File: block_creation.c.

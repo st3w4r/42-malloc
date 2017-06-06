@@ -112,9 +112,11 @@ EXPORT void	*realloc(void *ptr, size_t size)
 	t_block	*new_block;
 	t_zone	*current_zone;
 
-	if (ptr == NULL || g_first_addr == NULL || ptr < g_first_addr)
+	if (ptr == NULL || g_first_addr == NULL)
 		return (NULL);
 	current_block = (t_block*)(ptr - sizeof(t_block));
+	if (check_block_exist(current_block) == FALSE)
+		return (NULL);
 	current_zone = (t_zone*)current_block->zone;
 	if (right_type_zone(current_zone, size) == TRUE)
 	{
