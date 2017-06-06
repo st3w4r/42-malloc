@@ -30,8 +30,8 @@
 # define LIMIT_TINY 1000
 # define LIMIT_SMALL 10000
 
-# define TINY_BLOCK 1000
-# define SMALL_BLOCK 10000
+# define TINY_BLOCK 1024
+# define SMALL_BLOCK 16 * 4096
 
 # define MIN_ALLOCATION_PER_ZONE 100
 
@@ -67,17 +67,17 @@ void			show_alloc_mem();
 /*
 ** File: realloc.c
 */
-void			*ft_realloc(void *ptr, size_t size);
+void			*realloc(void *ptr, size_t size);
 
 /*
 ** File: malloc.c
 */
-void			*ft_malloc(size_t size);
+void			*malloc(size_t size);
 
 /*
 ** File: free.c
 */
-void			ft_free(void *ptr);
+void			free(void *ptr);
 
 /*
 ** File: zone_creation.c

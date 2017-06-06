@@ -43,10 +43,6 @@ void	show_memory_zone(t_zone *zone)
 	t_zone	*current_zone;
 
 	current_zone = zone;
-	while (current_zone != NULL && current_zone->next_zone != NULL)
-	{
-		current_zone = current_zone->next_zone;
-	}
 	while (current_zone != NULL)
 	{
 		if (current_zone->type == 'T')
@@ -58,7 +54,7 @@ void	show_memory_zone(t_zone *zone)
 		ft_puthexa((uint64_t)current_zone->current_zone);
 		ft_putchar('\n');
 		show_memory_block(current_zone->first_block);
-		current_zone = current_zone->previous_zone;
+		current_zone = current_zone->next_zone;
 	}
 }
 

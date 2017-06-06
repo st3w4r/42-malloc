@@ -55,7 +55,7 @@ t_block	*get_block(t_block *block, t_zone *first_zone, size_t size)
 	return (block);
 }
 
-EXPORT void	*ft_malloc(size_t size)
+EXPORT void	*malloc(size_t size)
 {
 	t_zone	*first_zone;
 	t_block	*block;

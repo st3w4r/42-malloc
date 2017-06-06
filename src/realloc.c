@@ -65,7 +65,7 @@ t_block	*new_allocation(t_block *block, size_t new_size)
 	t_block	*new_block;
 	void	*ptr_data;
 
-	ptr_data = ft_malloc(new_size);
+	ptr_data = malloc(new_size);
 	if (ptr_data == NULL)
 	{
 		return (NULL);
@@ -75,7 +75,7 @@ t_block	*new_allocation(t_block *block, size_t new_size)
 	{
 		copy_data_size(new_block->ptr_data, block->ptr_data,
 										new_block->size_data, block->size_data);
-		ft_free(block->ptr_data);
+		free(block->ptr_data);
 	}
 	return (new_block);
 }
@@ -106,7 +106,7 @@ t_block	*resize_allocation(t_block *block, size_t new_size)
 	return (new_block);
 }
 
-EXPORT void	*ft_realloc(void *ptr, size_t size)
+EXPORT void	*realloc(void *ptr, size_t size)
 {
 	t_block	*current_block;
 	t_block	*new_block;
