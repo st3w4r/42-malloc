@@ -16,10 +16,7 @@
 ** Add the header to the zone
 */
 
-void	init_zone(void *first_zone_addr,
-							size_t allocation_size,
-							size_t block_size,
-							char type)
+void	init_zone(void *first_zone_addr, size_t allocation_size, char type)
 {
 	t_zone	*zone;
 

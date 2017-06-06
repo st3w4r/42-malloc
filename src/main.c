@@ -193,8 +193,8 @@ int main(int argc, char **argv) {
 	// ptr = strcpy(ptr, "Hello!\0");
 	// ptr = ft_realloc(ptr, 31);
 	//
-	// // ptr = memset(ptr, '\0',87);
-	// // ptr = memset(ptr, 'Y', 87);
+	// // ptr = ft_memset(ptr, '\0',87);
+	// // ptr = ft_memset(ptr, 'Y', 87);
 	// printf("Sentence: %s\n", ptr);
 	// display_memory_zone((t_zone*)g_first_addr);
 	// printf("__________________\n" );

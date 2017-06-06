@@ -17,6 +17,7 @@ ifeq ($(HOSTTYPE),)
 endif
 
 NAME = libft_malloc_$(HOSTTYPE).so
+NAME_LINK = libft_malloc.so
 
 PATH_SRC = ./src/
 
@@ -27,14 +28,20 @@ PATH_INC_LIBFT = ./libft/includes/
 INCLUDES = -I $(PATH_INC) -I $(PATH_INC_LIBFT)
 
 CC = cc
-#CFLAGS = -Wall -Wextra -Werror -Ofast $(INCLUDES)
-CFLAGS = $(INCLUDES) -g
+
+ifeq ($(DEBUG),yes)
+	CFLAGS = $(INCLUDES) -g -fPIC -fvisibility=hidden
+	LDFLAGS = -shared
+else
+	CFLAGS = -Wall -Wextra -Werror -Ofast $(INCLUDES) -fPIC -fvisibility=hidden
+	LDFLAGS = -shared
+endif
+
 LIBS = -L libft/ -lft
 
 #_____________FILES____________#
 
-SRC =	main.c \
-	malloc.c \
+SRC = malloc.c \
 	realloc.c \
 	free.c \
 	block_initialisation.c \
@@ -56,7 +63,8 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make -C libft/
-	$(CC) $(OBJ) -o $(NAME) $(LIBS)
+	$(CC) $(OBJ) -o $(NAME) $(LIBS) $(LDFLAGS)
+	ln -s $(NAME) $(NAME_LINK)
 
 #____CLEAN____#
 
@@ -67,6 +75,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f $(NAME_LINK)
 
 #____RE____#
 

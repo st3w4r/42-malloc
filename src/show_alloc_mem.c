@@ -41,7 +41,6 @@ void	show_memory_block(void *addr)
 void	show_memory_zone(t_zone *zone)
 {
 	t_zone	*current_zone;
-	t_block	*block;
 
 	current_zone = zone;
 	while (current_zone != NULL && current_zone->next_zone != NULL)
@@ -69,6 +68,7 @@ void	show_total(t_zone *zone)
 	t_zone		*current_zone;
 	t_block		*block;
 
+  total = 0;
 	current_zone = zone;
 	while (current_zone != NULL)
 	{
@@ -85,7 +85,7 @@ void	show_total(t_zone *zone)
 	ft_putstr(" octets\n");
 }
 
-void	show_alloc_mem(void)
+EXPORT void	show_alloc_mem(void)
 {
 	t_zone *zone;
 

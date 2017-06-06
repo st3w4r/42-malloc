@@ -12,7 +12,7 @@
 
 #include "malloc.h"
 
-void	ft_free(void *ptr)
+EXPORT void	ft_free(void *ptr)
 {
 	if (ptr != NULL && g_first_addr != NULL)
 	{

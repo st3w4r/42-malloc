@@ -51,7 +51,7 @@ t_zone	*create_empty_zone(size_t block_size, char type)
 	ptr_zone = allocate_zone(allocation_size);
 	if (ptr_zone != NULL)
 	{
-		init_zone(ptr_zone, allocation_size, block_size, type);
+		init_zone(ptr_zone, allocation_size, type);
 	}
 	return (ptr_zone);
 }
@@ -61,7 +61,6 @@ size_t	get_allocation_size(size_t block_size)
 	size_t	nb_page;
 	size_t	allocation_size;
 	size_t	page_size;
-	void	*ptr_zone;
 
 	page_size = getpagesize();
 	nb_page = get_number_of_pages(page_size, sizeof(t_block) + block_size);

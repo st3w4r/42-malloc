@@ -83,7 +83,6 @@ t_block	*new_allocation(t_block *block, size_t new_size)
 t_block	*resize_allocation(t_block *block, size_t new_size)
 {
 	t_block	*new_block;
-	void	*ptr_data;
 
 	new_block = NULL;
 	if (block->size_data >= new_size)
@@ -107,12 +106,11 @@ t_block	*resize_allocation(t_block *block, size_t new_size)
 	return (new_block);
 }
 
-void	*ft_realloc(void *ptr, size_t size)
+EXPORT void	*ft_realloc(void *ptr, size_t size)
 {
 	t_block	*current_block;
 	t_block	*new_block;
 	t_zone	*current_zone;
-	void	*ptr_data;
 
 	if (ptr == NULL || g_first_addr == NULL || ptr < g_first_addr)
 		return (NULL);
