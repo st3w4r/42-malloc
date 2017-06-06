@@ -37,7 +37,6 @@
 
 typedef struct	s_block {
 	void			*zone;
-	void			*current_addr;
 	void			*next_addr;
 	size_t			size_data;
 	unsigned int	is_free;
