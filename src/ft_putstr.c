@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbier <ybarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 15:21:02 by ybarbier          #+#    #+#             */
-/*   Updated: 2017/06/05 15:21:03 by ybarbier         ###   ########.fr       */
+/*   Created: 2014/11/07 18:00:47 by ybarbier          #+#    #+#             */
+/*   Updated: 2014/11/07 18:09:28 by ybarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-EXPORT void	free(void *ptr)
+void	ft_putstr(char const *s)
 {
-	t_block *block;
-	t_zone *zone;
+	unsigned int i;
 
-	if (ptr != NULL && g_first_addr != NULL)
-	{
-		block = (t_block*)(ptr - sizeof(t_block));
-		zone = (t_zone*)block->zone;
-		release_block(block);
-		release_empty_zone(zone);
-	}
+	i = 0;
+	while (s[i])
+		ft_putchar(s[i++]);
 }

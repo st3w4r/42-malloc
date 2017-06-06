@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbier <ybarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 15:21:02 by ybarbier          #+#    #+#             */
-/*   Updated: 2017/06/05 15:21:03 by ybarbier         ###   ########.fr       */
+/*   Created: 2014/11/04 15:17:11 by ybarbier          #+#    #+#             */
+/*   Updated: 2014/11/04 17:12:54 by ybarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-EXPORT void	free(void *ptr)
+void *ft_memset(void *b, int c, size_t len)
 {
-	t_block *block;
-	t_zone *zone;
+	size_t	counter;
+	char	*str;
 
-	if (ptr != NULL && g_first_addr != NULL)
+	str = (char *)b;
+	if (!str)
+		return (NULL);
+	if (len == 0)
+		return (str);
+	counter = 0;
+	while (counter < len)
 	{
-		block = (t_block*)(ptr - sizeof(t_block));
-		zone = (t_zone*)block->zone;
-		release_block(block);
-		release_empty_zone(zone);
+		str[counter] = (char)c;
+		counter++;
 	}
+	return (b);
 }

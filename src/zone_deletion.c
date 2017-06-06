@@ -39,30 +39,28 @@ void	release_zone(t_zone *zone)
 	result = munmap(zone->current_zone, zone->size);
 }
 
-void	release_empty_zone(t_zone *first_zone)
+void	release_empty_zone(t_zone *current_zone)
 {
-	t_zone *current_zone;
 	t_zone *previous_zone;
 	t_zone *next_zone;
 
-	current_zone = first_zone;
 	previous_zone = NULL;
 	next_zone = NULL;
-	while (current_zone != NULL)
+	if (current_zone != NULL)
 	{
 		next_zone = current_zone->next_zone;
+		previous_zone = current_zone->previous_zone;
 		if (zone_is_empty(current_zone) == TRUE)
 		{
-			release_zone(current_zone);
-			if (previous_zone == NULL)
-				g_first_addr = next_zone;
-			else
+			if (previous_zone != NULL)
+			{
+				release_zone(current_zone);
 				previous_zone->next_zone = next_zone;
+				if (next_zone != NULL)
+				{
+					next_zone->previous_zone = previous_zone;
+				}
+			}
 		}
-		else
-		{
-			previous_zone = current_zone;
-		}
-		current_zone = next_zone;
 	}
 }

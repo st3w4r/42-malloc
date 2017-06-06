@@ -1,27 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbier <ybarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 15:21:02 by ybarbier          #+#    #+#             */
-/*   Updated: 2017/06/05 15:21:03 by ybarbier         ###   ########.fr       */
+/*   Created: 2014/11/04 16:29:30 by ybarbier          #+#    #+#             */
+/*   Updated: 2014/11/05 18:14:04 by ybarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-EXPORT void	free(void *ptr)
+void ft_bzero(void *s, size_t n)
 {
-	t_block *block;
-	t_zone *zone;
-
-	if (ptr != NULL && g_first_addr != NULL)
-	{
-		block = (t_block*)(ptr - sizeof(t_block));
-		zone = (t_zone*)block->zone;
-		release_block(block);
-		release_empty_zone(zone);
-	}
+	s = ft_memset(s, '\0', n);
 }

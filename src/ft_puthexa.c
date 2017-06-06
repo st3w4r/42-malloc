@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "malloc.h"
 #include <stdint.h>
 
 void	ft_puthexa(uint64_t nb)

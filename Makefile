@@ -23,9 +23,10 @@ PATH_SRC = ./src/
 
 PATH_INC = ./inc
 
-PATH_INC_LIBFT = ./libft/includes/
+# PATH_INC_LIBFT = ./libft/includes/
 
-INCLUDES = -I $(PATH_INC) -I $(PATH_INC_LIBFT)
+# INCLUDES = -I $(PATH_INC) -I $(PATH_INC_LIBFT)
+INCLUDES = -I $(PATH_INC)
 
 CC = cc
 
@@ -37,7 +38,7 @@ else
 	LDFLAGS = -shared
 endif
 
-LIBS = -L libft/ -lft
+# LIBS = -L libft/ -lft
 
 #_____________FILES____________#
 
@@ -49,8 +50,13 @@ SRC = malloc.c \
 	zone_initialisation.c \
 	zone_creation.c \
 	zone_deletion.c \
+	show_alloc_mem.c \
 	ft_puthexa.c \
-	show_alloc_mem.c
+	ft_putnbr.c \
+	ft_putstr.c \
+	ft_putchar.c \
+	ft_memset.c \
+	ft_bzero.c
 
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
@@ -62,8 +68,9 @@ OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C libft/
-	$(CC) $(OBJ) -o $(NAME) $(LIBS) $(LDFLAGS)
+	# make -C libft/
+	# $(CC) $(OBJ) -o $(NAME) $(LIBS) $(LDFLAGS)
+	$(CC) $(OBJ) -o $(NAME) $(LDFLAGS)
 	ln -s $(NAME) $(NAME_LINK)
 
 #____CLEAN____#

@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybarbier <ybarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 15:21:02 by ybarbier          #+#    #+#             */
-/*   Updated: 2017/06/05 15:21:03 by ybarbier         ###   ########.fr       */
+/*   Created: 2014/11/07 20:03:15 by ybarbier          #+#    #+#             */
+/*   Updated: 2014/11/08 16:31:08 by ybarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "malloc.h"
 
-EXPORT void	free(void *ptr)
+void ft_putnbr(int n)
 {
-	t_block *block;
-	t_zone *zone;
+	unsigned int	nb;
 
-	if (ptr != NULL && g_first_addr != NULL)
+	if (n < 0)
 	{
-		block = (t_block*)(ptr - sizeof(t_block));
-		zone = (t_zone*)block->zone;
-		release_block(block);
-		release_empty_zone(zone);
+		nb = -n;
+		ft_putchar('-');
 	}
+	else
+		nb = n;
+	if (nb >= 10)
+	{
+		ft_putnbr(nb / 10);
+		ft_putchar((nb % 10) + '0');
+	}
+	else
+		ft_putchar(nb + '0');
 }

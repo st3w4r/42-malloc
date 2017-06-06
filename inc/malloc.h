@@ -13,7 +13,7 @@
 #ifndef MALLOC_H
 # define MALLOC_H
 
-# include "libft.h"
+// # include "libft.h"
 # include <sys/mman.h>
 # include <unistd.h>
 # include <stdint.h>
@@ -31,7 +31,7 @@
 # define LIMIT_SMALL 10000
 
 # define TINY_BLOCK 1024
-# define SMALL_BLOCK 16 * 4096
+# define SMALL_BLOCK 10000
 
 # define MIN_ALLOCATION_PER_ZONE 100
 
@@ -102,7 +102,7 @@ t_bool			is_space_available_zone(t_zone *zone, size_t size_data_block);
 */
 t_bool			zone_is_empty(t_zone *zone);
 void			release_zone(t_zone *zone);
-void			release_empty_zone(t_zone *first_zone);
+void			release_empty_zone(t_zone *current_zone);
 
 /*
 ** File: block_initialisation.c.
@@ -123,8 +123,13 @@ t_block			*get_reusable_block(t_block *block, size_t size_data);
 t_block			*add_block_to_zone(t_zone *zone, size_t size_data);
 
 /*
-** File: ft_puthexa.c
+** File: libft
 */
 void			ft_puthexa(uint64_t nb);
+void			ft_putnbr(int n);
+void			ft_putstr(char const *s);
+void			ft_putchar(char c);
+void			*ft_memset(void *b, int c, size_t len);
+void			ft_bzero(void *s, size_t n);
 
 #endif
