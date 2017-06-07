@@ -58,22 +58,22 @@ void			*g_first_addr;
 ** File: show_alloc_mem.c
 */
 
-void			show_alloc_mem();
+extern void			show_alloc_mem();
 
 /*
 ** File: realloc.c
 */
-void			*realloc(void *ptr, size_t size);
+extern void			*realloc(void *ptr, size_t size);
 
 /*
 ** File: malloc.c
 */
-void			*malloc(size_t size);
+extern void			*malloc(size_t size);
 
 /*
 ** File: free.c
 */
-void			free(void *ptr);
+extern void			free(void *ptr);
 
 /*
 ** File: zone_creation.c
