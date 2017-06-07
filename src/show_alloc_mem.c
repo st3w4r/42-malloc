@@ -64,7 +64,7 @@ void	show_total(t_zone *zone)
 	t_zone		*current_zone;
 	t_block		*block;
 
-  total = 0;
+	total = 0;
 	current_zone = zone;
 	while (current_zone != NULL)
 	{
@@ -81,7 +81,7 @@ void	show_total(t_zone *zone)
 	ft_putstr(" octets\n");
 }
 
-EXPORT void	show_alloc_mem(void)
+void	show_alloc_mem(void)
 {
 	t_zone *zone;
 

@@ -107,7 +107,7 @@ t_block	*resize_allocation(t_block *block, size_t new_size)
 	return (new_block);
 }
 
-EXPORT void	*realloc(void *ptr, size_t size)
+void	*realloc(void *ptr, size_t size)
 {
 	t_block	*current_block;
 	t_block	*new_block;

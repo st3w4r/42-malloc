@@ -13,12 +13,9 @@
 #ifndef MALLOC_H
 # define MALLOC_H
 
-// # include "libft.h"
 # include <sys/mman.h>
 # include <unistd.h>
 # include <stdint.h>
-
-#define EXPORT __attribute__ ((visibility("default")))
 
 # define FALSE 0
 # define TRUE 1

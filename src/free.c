@@ -12,10 +12,10 @@
 
 #include "malloc.h"
 
-EXPORT void	free(void *ptr)
+extern void	free(void *ptr)
 {
-	t_block *block;
-	t_zone *zone;
+	t_block	*block;
+	t_zone	*zone;
 
 	if (ptr != NULL && g_first_addr != NULL)
 	{

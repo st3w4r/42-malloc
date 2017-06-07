@@ -12,7 +12,7 @@
 
 #include "malloc.h"
 
-void ft_putnbr(int n)
+void	ft_putnbr(int n)
 {
 	unsigned int	nb;
 

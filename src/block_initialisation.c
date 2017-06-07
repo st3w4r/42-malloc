@@ -18,7 +18,6 @@ t_block	*init_one_block(t_zone *zone, void *block_ptr, size_t size_data)
 
 	block = (t_block*)block_ptr;
 	block->zone = zone;
-	// block->current_addr = block_ptr;
 	block->next_addr = NULL;
 	block->is_free = TRUE;
 	block->size_data = size_data;
@@ -48,8 +47,10 @@ t_bool	check_block_exist(t_block *addr_block)
 	while (current_zone != NULL)
 	{
 		current_block = current_zone->first_block;
-		while (current_block != NULL) {
-			if (current_block == addr_block) {
+		while (current_block != NULL)
+		{
+			if (current_block == addr_block)
+			{
 				is_exist = TRUE;
 			}
 			current_block = (t_block*)current_block->next_addr;
