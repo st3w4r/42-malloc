@@ -34,7 +34,7 @@ ifeq ($(DEBUG),yes)
 	CFLAGS = $(INCLUDES) -g -fPIC -fvisibility=hidden
 	LDFLAGS = -shared
 else
-	CFLAGS = -Wall -Wextra -Werror -Ofast $(INCLUDES) -fPIC -fvisibility=hidden
+	CFLAGS = -Wall -Wextra -Werror $(INCLUDES) -fPIC -fvisibility=hidden
 	LDFLAGS = -shared
 endif
 

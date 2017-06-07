@@ -65,6 +65,7 @@ t_block	*new_allocation(t_block *block, size_t new_size)
 	t_block	*new_block;
 	void	*ptr_data;
 
+	ptr_data = NULL;
 	ptr_data = malloc(new_size);
 	if (ptr_data == NULL)
 	{
