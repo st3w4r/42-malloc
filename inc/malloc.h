@@ -6,7 +6,7 @@
 /*   By: ybarbier <ybarbier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 15:24:59 by ybarbier          #+#    #+#             */
-/*   Updated: 2017/06/05 17:46:29 by ybarbier         ###   ########.fr       */
+/*   Updated: 2017/06/07 15:17:33 by ybarbier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,29 +48,27 @@ typedef struct	s_zone {
 
 typedef unsigned int	t_bool;
 
-
 void			*g_first_addr;
 
 /*
 ** File: show_alloc_mem.c
 */
-
-extern void			show_alloc_mem();
+extern void		show_alloc_mem();
 
 /*
 ** File: realloc.c
 */
-extern void			*realloc(void *ptr, size_t size);
+extern void		*realloc(void *ptr, size_t size);
 
 /*
 ** File: malloc.c
 */
-extern void			*malloc(size_t size);
+extern void		*malloc(size_t size);
 
 /*
 ** File: free.c
 */
-extern void			free(void *ptr);
+extern void		free(void *ptr);
 
 /*
 ** File: zone_creation.c
@@ -84,7 +82,8 @@ void			*allocate_zone(size_t allocation_size);
 /*
 ** File: zone_initialisation.c
 */
-void			init_zone(void *first_zone_addr, size_t allocation_size, char type);
+void			init_zone(void *first_zone_addr,
+						size_t allocation_size, char type);
 t_zone			*add_new_zone(t_zone *zone, size_t size_data);
 t_zone			*get_right_zone(t_zone *first_zone, size_t size_data);
 t_bool			right_type_zone(t_zone *zone, size_t size_data);
