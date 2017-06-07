@@ -73,7 +73,7 @@ t_block	*add_block_to_zone(t_zone *zone, size_t size_data)
 	t_block *last_block;
 
 	last_block = get_last_block(zone);
-	block = (void*)last_block + sizeof(t_block) + last_block->size_data;
+	block = last_block->current_addr + sizeof(t_block) + last_block->size_data;
 	block = init_one_block(zone, block, size_data);
 	last_block->next_addr = block;
 	return (block);

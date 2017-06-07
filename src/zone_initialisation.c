@@ -109,7 +109,7 @@ t_bool	is_space_available_zone(t_zone *zone, size_t size_data_block)
 
 	last_block = get_last_block(zone);
 	max_addr = zone->current_zone + zone->size;
-	next_addr = (void*)last_block + sizeof(t_block)
+	next_addr = last_block->current_addr + sizeof(t_block)
 							+ last_block->size_data + sizeof(t_block)
 							+ size_data_block;
 	if (next_addr > max_addr)

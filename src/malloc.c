@@ -57,16 +57,41 @@ t_block	*get_block(t_block *block, t_zone *first_zone, size_t size)
 
 void	*malloc(size_t size)
 {
+	// void *ptr_zone;
+	//
+	// ptr_zone = mmap(0,
+	// 								size,
+	// 								PROT_READ | PROT_WRITE,
+	// 								MAP_ANON | MAP_PRIVATE,
+	// 								-1,
+	// 								0);
+	// ft_puthexa((uint64_t)ptr_zone);
+	// ft_putstr("\n");
+	// return ptr_zone;
 	t_zone	*first_zone;
 	t_block	*block;
 
 	first_zone = init_first_zone(size);
-	if (first_zone == NULL)
+	if (first_zone == NULL) {
+		// ft_putstr("RETURN NULL\n");
 		return (NULL);
+	}
 	block = NULL;
 	block = get_block(block, first_zone, size);
-	if (block == NULL)
+	if (block == NULL) {
+		// ft_putstr("RETURN NULL\n");
 		return (NULL);
+	}
 	set_block_to_used(block, size);
+	//
+	// ft_puthexa((uint64_t)block);
+	// ft_putstr(" - ");
+	// ft_puthexa((uint64_t)block->ptr_data);
+	// ft_putstr(" - ");
+	// ft_putnbr((uint64_t)block->size_data);
+	// ft_putstr("\n");
+	// display_memory_list(first_zone);
+// display_memory_block(block);
+// display_zone_list(first_zone);
 	return (block->ptr_data);
 }

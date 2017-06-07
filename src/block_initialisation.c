@@ -18,6 +18,7 @@ t_block	*init_one_block(t_zone *zone, void *block_ptr, size_t size_data)
 
 	block = (t_block*)block_ptr;
 	block->zone = zone;
+	block->current_addr = block_ptr;
 	block->next_addr = NULL;
 	block->is_free = TRUE;
 	block->size_data = size_data;

@@ -31,6 +31,7 @@
 
 typedef struct	s_block {
 	void			*zone;
+	void			*current_addr;
 	void			*next_addr;
 	size_t			size_data;
 	unsigned int	is_free;
@@ -124,5 +125,13 @@ void			ft_putstr(char const *s);
 void			ft_putchar(char c);
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);
+
+/*
+** File: display.c
+*/
+
+void display_memory_block(void *addr);
+void display_memory_list(t_zone *zone);
+void display_zone_list(t_zone *zone);
 
 #endif
