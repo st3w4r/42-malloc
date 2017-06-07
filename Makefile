@@ -31,10 +31,10 @@ INCLUDES = -I $(PATH_INC)
 CC = cc
 
 ifeq ($(DEBUG),yes)
-	CFLAGS = $(INCLUDES) -g -fPIC -fvisibility=hidden
+	CFLAGS = $(INCLUDES) -g -fPIC
 	LDFLAGS = -shared
 else
-	CFLAGS = -Wall -Wextra -Werror $(INCLUDES) -fPIC -fvisibility=hidden
+	CFLAGS = -Wall -Wextra -Werror $(INCLUDES) -fPIC
 	LDFLAGS = -shared
 endif
 
