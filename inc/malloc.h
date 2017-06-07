@@ -27,11 +27,8 @@
 # define SMALL 'S'
 # define LARGE 'L'
 
-# define LIMIT_TINY 1000
-# define LIMIT_SMALL 10000
-
 # define TINY_BLOCK 1024
-# define SMALL_BLOCK 10000
+# define SMALL_BLOCK 1024 * 32
 
 # define MIN_ALLOCATION_PER_ZONE 100
 
