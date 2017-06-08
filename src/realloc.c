@@ -123,6 +123,8 @@ void	*realloc(void *ptr, size_t size)
 	current_block = (t_block*)(ptr - sizeof(t_block));
 	if (check_block_exist(current_block) == FALSE)
 		return (NULL);
+	if (current_block->is_free == TRUE)
+		return (NULL);
 	current_zone = (t_zone*)current_block->zone;
 	if (right_type_zone(current_zone, size) == TRUE)
 		new_block = resize_allocation(current_block, size);

@@ -5,19 +5,32 @@
 int main(int argc, char** argv)
 {
 	size_t nb;
-	void *ptr;
+	int i;
+	char *addr;
 
 	if (argc != 2)
 	{
 		return 0;
 	}
-
 	nb = atoi(argv[1]);
-	ptr = NULL;
-	ptr = malloc(nb);
 
-	printf("%p\n", ptr);
-	printf("%zu\n", (size_t)nb);
+
+
+
+	i = 0;
+	while (i < nb)
+	{
+		addr = (char*)malloc(nb);
+		addr[0] = 42;
+		i++;
+	}
+
+	// nb = atoi(argv[1]);
+	// ptr = NULL;
+	// ptr = malloc(nb);
+
+	// printf("%p\n", ptr);
+	// printf("%zu\n", (size_t)nb);
 	// malloc(1024 * 32);
 	// malloc(1024 * 1024);
 	// malloc(1024 * 1024 * 16);
