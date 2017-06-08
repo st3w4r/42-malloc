@@ -115,11 +115,6 @@ void	*realloc(void *ptr, size_t size)
 
 	if (ptr == NULL || g_first_addr == NULL)
 		return (malloc(size));
-	if (ptr != NULL && size == 0)
-	{
-		free(ptr);
-		return (NULL);
-	}
 	current_block = (t_block*)(ptr - sizeof(t_block));
 	if (check_block_exist(current_block) == FALSE)
 		return (NULL);
