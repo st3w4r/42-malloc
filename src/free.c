@@ -22,6 +22,8 @@ extern void	free(void *ptr)
 		block = (t_block*)(ptr - sizeof(t_block));
 		if (check_block_exist(block) == TRUE)
 		{
+			if (block->is_free == TRUE)
+				return ;
 			zone = (t_zone*)block->zone;
 			release_block(block);
 			release_empty_zone(zone);
