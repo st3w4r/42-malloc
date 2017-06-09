@@ -1,6 +1,6 @@
 # Malloc
 
-Memory allocator, Shared library
+Memory allocator, is a shared library `libft_malloc.so`
 
 ## Exposed Functions
 
