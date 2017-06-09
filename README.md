@@ -1,6 +1,15 @@
 # Malloc
 
-Memory allocator
+Memory allocator, Shared library
+
+## Exposed Functions
+
+	void *malloc(size_t size);
+	void free(void *ptr);
+	void *realloc(void *ptr, size_t size);
+	void *calloc(size_t count, size_t size);
+
+## Arch
 
 3 type of zone:
 
@@ -15,6 +24,6 @@ Memory allocator
 
 ## Test
 
-Replace the dynamic library malloc by yours:
+Replace the system dynamic library malloc by yours:
 
 	./test/run.sh <test_program>
