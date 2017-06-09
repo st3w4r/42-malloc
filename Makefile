@@ -56,7 +56,9 @@ SRC = malloc.c \
 	ft_putstr.c \
 	ft_putchar.c \
 	ft_memset.c \
-	ft_bzero.c
+	ft_bzero.c \
+	calloc.c \
+	reallocf.c
 
 
 OBJ = $(addprefix $(PATH_SRC), $(SRC:.c=.o))

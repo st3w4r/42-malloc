@@ -61,6 +61,16 @@ extern void		show_alloc_mem();
 extern void		*realloc(void *ptr, size_t size);
 
 /*
+** File: realloc.c
+*/
+extern void		*reallocf(void *ptr, size_t size);
+
+/*
+** File: calloc.c
+*/
+extern void		*calloc(size_t count, size_t size);
+
+/*
 ** File: malloc.c
 */
 extern void		*malloc(size_t size);
